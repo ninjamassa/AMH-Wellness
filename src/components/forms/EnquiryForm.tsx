@@ -59,8 +59,8 @@ export function EnquiryForm() {
       >
         <h2 className="text-h2">Your contact request has been sent</h2>
         <p className="mt-4 max-w-reading text-ink-700">
-          Akila will reply by email. No free-text message or health information
-          was submitted through this form.
+          Your name and email address were sent to Akila so she can reply. No
+          free-text message or health information was submitted through this form.
         </p>
       </section>
     );
@@ -85,8 +85,8 @@ export function EnquiryForm() {
       <input ref={startedAtRef} type="hidden" name="startedAt" defaultValue="" />
 
       <p className="mb-7 max-w-reading text-sm text-ink-500">
-        Leave your name and email address and Akila will reply. Clinical details
-        are collected through the hosted clinical booking process, so this form does not
+        Leave your name and email address so Akila can reply. Clinical details are
+        collected through the hosted clinical booking process, so this form does not
         ask for a message or health information.
       </p>
 

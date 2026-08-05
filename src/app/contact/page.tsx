@@ -10,10 +10,10 @@ import { siteConfig } from "@/lib/site-config";
  * STAGE     considering
  *
  * JOB
- * A low-commitment way to ask a question when she isn't ready to book.
+ * A low-commitment way to ask Akila to reply when she isn't ready to book.
  *
  * ANSWERS   no single objection — supporting page
- * NEXT STEP Send an enquiry
+ * NEXT STEP Request a reply
  * TARGETS   —
  *
  * Full spec: src/lib/patient-journey.ts → specForRoute("/contact")

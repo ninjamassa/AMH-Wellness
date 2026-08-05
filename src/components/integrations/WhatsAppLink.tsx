@@ -26,7 +26,10 @@ export function WhatsAppLink({
       >
         Message Akila on WhatsApp
       </a>
-      <p className="mt-2 text-sm text-ink-500">Replies: {responseHours}.</p>
+      <p className="mt-2 text-sm text-ink-500">
+        Stated response hours: {responseHours}. These are not a guaranteed
+        turnaround time.
+      </p>
     </div>
   );
 }

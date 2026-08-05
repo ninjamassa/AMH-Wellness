@@ -182,9 +182,9 @@ export const pages: PageSpec[] = [
     group: "core",
     title: "Contact",
     stage: "considering",
-    job: "A low-commitment way to ask a question when she isn't ready to book.",
+    job: "A low-commitment way to ask Akila to reply when she isn't ready to book.",
     answers: null,
-    nextStep: "Send an enquiry",
+    nextStep: "Request a reply",
     targets: [],
   },
 
