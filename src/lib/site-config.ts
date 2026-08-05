@@ -22,7 +22,7 @@ export const siteConfig = {
 
   /** How we describe the service when we need a fuller line. */
   positioning:
-    "One-to-one weight loss support from an independent prescribing pharmacist — with the nutrition coaching and aftercare that other services leave out.",
+    "One-to-one weight loss support from an independent prescribing pharmacist — with nutrition guidance, four-weekly reviews and maintenance planning from the start.",
 
   contact: {
     /** She's on a personal Gmail today. This domain address needs setting up. */

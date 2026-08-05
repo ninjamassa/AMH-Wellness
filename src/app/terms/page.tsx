@@ -36,8 +36,8 @@ export default function TermsPage() {
           AMH Wellness has not yet confirmed the full terms for using its remote
           service. This draft explains that website information is general, treatment
           requires a consultation and prescribing is never automatic. Booking,
-          payment, cancellation, refund and treatment terms still require Akila&apos;s
-          and a legal reviewer&apos;s approval before publication.
+          payment, cancellation, refund and treatment terms still require approval
+          from Akila and a legal reviewer before publication.
         </p>
       </AnswerFirst>
 
