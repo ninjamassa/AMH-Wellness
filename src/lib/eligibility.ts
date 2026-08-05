@@ -72,7 +72,7 @@ export function assessEligibility(answers: EligibilityAnswers): EligibilityOutco
       headline: "Let's have a conversation first",
       detail:
         "Based on your answers, Akila would like to talk through your health history with you before deciding whether this is the right service for you. That's a good sign, not a bad one — it's exactly the kind of thing that gets missed elsewhere.",
-      nextStep: { label: "Send Akila a message", href: "/contact" },
+      nextStep: { label: "Ask Akila to contact you", href: "/contact" },
     };
   }
 

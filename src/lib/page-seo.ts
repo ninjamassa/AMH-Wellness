@@ -47,7 +47,7 @@ export const pageSeo = {
   "/contact": {
     title: "Contact Akila at AMH Wellness",
     description:
-      "Contact AMH Wellness with a question for Akila Dungarwalla MPharmS. See her stated response hours and use the enquiry form before deciding whether to book.",
+      "Ask Akila Dungarwalla MPharmS to reply by email through the AMH Wellness contact request form, with no message or health information collected on the page.",
     path: "/contact",
   },
   "/weight-loss-injections": {
