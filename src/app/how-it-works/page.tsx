@@ -1,6 +1,7 @@
 import { JsonLd } from "@/components/schema/JsonLd";
 import { AnswerFirst } from "@/components/sections/AnswerFirst";
 import { JourneySteps } from "@/components/sections/JourneySteps";
+import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { answerBlockQuestions } from "@/lib/answer-blocks";
 import { pageSeo } from "@/lib/page-seo";
@@ -43,15 +44,63 @@ export default function HowItWorksPage() {
       </Container>
 
       <AnswerFirst question={answerBlockQuestions["/how-it-works"]}>
-        {/* TODO(content-agent): 40–60 words. Answer outright in the first
-            sentence, name AMH Wellness, make it stand alone. */}
-        <p>Content in progress.</p>
+        <p>
+          Online weight loss treatment at AMH Wellness follows five steps:
+          booking, a health questionnaire, a one-to-one video consultation with
+          Akila, pharmacy dispensing and delivery if treatment is appropriate, then
+          reviews every four weeks. You can message the same prescribing pharmacist
+          between appointments instead of starting again with someone new.
+        </p>
       </AnswerFirst>
 
       <JourneySteps />
 
       <Container className="pb-section">
-        {/* TODO(content-agent): supporting page body per the brief above. */}
+        <div className="max-w-3xl space-y-12">
+          <section>
+            <h2 className="text-h2">How much do I pay before we speak?</h2>
+            <p className="mt-5 text-ink-500">
+              The booking process includes a booking fee to secure your appointment,
+              but its amount has not yet been confirmed by Akila. Treatment and
+              medicine prices are also awaiting confirmation. AMH Wellness will not
+              publish a plausible-looking number and ask you to discover later that
+              it was wrong.
+            </p>
+            {/* TODO(human): Akila must confirm the booking fee, consultation price, treatment prices and exactly what each amount includes. */}
+          </section>
+
+          <section>
+            <h2 className="text-h2">Who will I see at each appointment?</h2>
+            <p className="mt-5 text-ink-500">
+              You see Akila Dungarwalla MPharmS. She conducts the consultation,
+              prescribes personally if treatment is suitable and carries out your
+              reviews every four weeks. You are not passed between clinicians after
+              the first appointment.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-h2">Where does the consultation happen?</h2>
+            <p className="mt-5 text-ink-500">
+              Consultations are video calls and the service is available to patients
+              across the UK. The South Croydon address shown in the legal information
+              is AMH Wellness&apos;s registered office, not a clinic or a place to attend
+              for an appointment.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-h2">What if I have a concern between reviews?</h2>
+            <p className="mt-5 text-ink-500">
+              Patients can message Akila between appointments. She responds during
+              the hours published by AMH Wellness. This is for non-urgent questions;
+              use NHS 111 for urgent medical advice and call 999 in a life-threatening
+              emergency.
+            </p>
+          </section>
+
+          <Button href="/am-i-eligible">Check if you may be eligible</Button>
+        </div>
       </Container>
     </>
   );

@@ -6,14 +6,11 @@ export default function NotFound() {
     <Container className="py-section">
       <h1 className="text-h1">Page not found</h1>
       <p className="mt-4 max-w-xl text-ink-500">
-        That page doesn&apos;t exist, or it may have moved. You can start from the
-        homepage, or check whether our service is right for you.
+        That page does not exist, or it may have moved. Start from the homepage
+        to find the information you were looking for.
       </p>
-      <div className="mt-8 flex flex-wrap gap-4">
+      <div className="mt-8">
         <Button href="/">Back to homepage</Button>
-        <Button href="/am-i-eligible" variant="ghost">
-          Check your eligibility
-        </Button>
       </div>
     </Container>
   );

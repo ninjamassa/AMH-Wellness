@@ -55,12 +55,18 @@ export function SiteFooter() {
           <p>
             All consultations are with {clinician.name} {clinician.credentials},{" "}
             {clinician.jobTitle}, registered with the General Pharmaceutical Council
-            (registration {clinician.gphcNumber}). {regulatory.cqcStatus} with the Care
-            Quality Commission.
+            (registration {clinician.gphcNumber}). CQC registration is{" "}
+            {regulatory.cqcStatus.toLowerCase()}.
           </p>
           <p className="mt-3">
-            We aim to reply {responseHours}.
-            Enquiries: {contact.email}
+            Akila handles contact requests during {responseHours}.{" "}
+            <Link
+              href="/contact"
+              className="inline-flex min-h-touch items-center underline underline-offset-4 hover:text-indigo-600"
+            >
+              Ask Akila to reply by email
+            </Link>
+            .
           </p>
           {whatsappUrl === null ? null : (
             <WhatsAppLink

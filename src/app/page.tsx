@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { AnswerFirst } from "@/components/sections/AnswerFirst";
 import { Cta } from "@/components/sections/Cta";
 import { TrustBar } from "@/components/sections/TrustBar";
@@ -30,26 +29,20 @@ export const metadata = buildMetadata(pageSeo["/"]);
 const pillars = [
   {
     title: "The same person, every time",
-    body: "Akila prescribes personally and reviews you personally. You're not passed between clinicians you'll never speak to twice.",
-    href: "/about",
-    linkText: "About Akila",
+    body: "Akila prescribes personally and reviews you every four weeks. Your questions go back to the pharmacist who already knows your history.",
   },
   {
-    title: "Nutrition coaching, not just a prescription",
-    body: "A plan for what you actually eat — protein, vitamins, meals that work around your life — included from the first consultation.",
-    href: "/blog/protein-and-nutrition-on-injections",
-    linkText: "Read our nutrition guidance",
+    title: "Nutrition guidance, not just a prescription",
+    body: "Meal-planning support, nutrition guidance and supplement advice where appropriate are included from the first consultation.",
   },
   {
     title: "A plan for when you stop",
-    body: "The question nobody else answers. We start planning how you'll keep the weight off before you need to.",
-    href: "/support-after-injections",
-    linkText: "Support after injections",
+    body: "Maintenance is discussed from the start, so you are not left to work out what happens after treatment on your own.",
   },
 ];
 
 export default function HomePage() {
-  const { clinician, eligibility, contact } = siteConfig;
+  const { clinician, eligibility } = siteConfig;
 
   return (
     <>
@@ -60,40 +53,41 @@ export default function HomePage() {
             className="absolute -right-24 -top-24 size-72 rounded-pill bg-teal-50"
           />
           <div className="relative max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-wide text-teal-600">
-            {clinician.jobTitle} · GPhC {clinician.gphcNumber}
-          </p>
-          <h1 className="mt-4 text-display">
-            Weight loss injections, with someone who actually picks up
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-500">
-            Most services post you a pen and leave you to it. AMH Wellness gives you
-            one-to-one video consultations with {clinician.name} {clinician.credentials},
-            nutrition coaching, reviews every four weeks — and a plan for keeping the
-            weight off once you finish.
-          </p>
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-            <Button href="/am-i-eligible">Check if you&apos;re eligible</Button>
-            <Button href="/how-it-works" variant="ghost">
-              See how it works
-            </Button>
-          </div>
-          <p className="mt-4 text-sm text-ink-500">
-            Takes about two minutes. No obligation to book.
-          </p>
+            <p className="text-sm font-semibold uppercase tracking-wide text-teal-600">
+              {clinician.jobTitle} · GPhC {clinician.gphcNumber}
+            </p>
+            <h1 className="mt-4 text-display">
+              Weight loss treatment with the pharmacist who stays with you
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-500">
+              If a previous service gave you a pen and an app but nobody consistent
+              to speak to, AMH Wellness is built differently. You see {clinician.name}{" "}
+              {clinician.credentials} herself, with nutrition guidance, reviews every
+              four weeks and a plan for what happens after treatment.
+            </p>
+            <div className="mt-9">
+              <Button href="/am-i-eligible">Check if you&apos;re eligible</Button>
+            </div>
+            <p className="mt-4 text-sm text-ink-500">
+              Takes about two minutes. No obligation to book.
+            </p>
           </div>
         </div>
       </Container>
 
-      <TrustBar />
-
       <AnswerFirst question={answerBlockQuestions["/"]}>
-        AMH Wellness is a UK weight loss service led by {clinician.name}{" "}
-        {clinician.credentials}, an independent prescribing pharmacist. Patients have a
-        one-to-one video consultation, receive a personalised plan with nutrition
-        guidance, and are reviewed every four weeks — with direct message access to
-        Akila in between.
+        <p>
+          AMH Wellness provides one-to-one weight loss support across the UK with{" "}
+          {clinician.name} {clinician.credentials}, an independent prescribing
+          pharmacist. Care is delivered by video and includes a personalised plan,
+          nutrition guidance, reviews every four weeks and message access to Akila
+          between appointments, with maintenance considered from the beginning.
+        </p>
       </AnswerFirst>
+
+      <div className="mt-8">
+        <TrustBar />
+      </div>
 
       <Container className="py-section">
         <h2 className="text-h2">
@@ -107,12 +101,6 @@ export default function HomePage() {
             >
               <h3 className="text-h3">{p.title}</h3>
               <p className="mt-3 flex-1 text-ink-500">{p.body}</p>
-              <Link
-                href={p.href}
-                className="mt-4 inline-flex min-h-touch items-center text-sm font-semibold text-teal-700 underline underline-offset-4 hover:text-teal-700"
-              >
-                {p.linkText}
-              </Link>
             </div>
           ))}
         </div>
@@ -123,56 +111,38 @@ export default function HomePage() {
       <Container className="pb-section">
         <Cta
           eyebrow="What happens when you stop?"
-          heading="Most people are never asked this until it's already happening"
-          primary={{ href: "/support-after-injections", label: "How our aftercare works" }}
+          heading="Your maintenance plan should not begin with the final prescription"
+          primary={{ href: "/am-i-eligible", label: "Check if you may be eligible" }}
         >
           <p>
-            Coming off treatment is where a lot of people lose their progress — not
-            because they did anything wrong, but because nobody prepared them for it.
-            We build your maintenance plan into the programme from day one, and the
-            nutrition coaching carries on afterwards.
+            Appetite can change again when treatment stops, and weight regain is a
+            recognised concern rather than a personal failure. AMH Wellness starts
+            the conversation early, with nutrition guidance and a plan for maintaining
+            your weight once treatment finishes.
           </p>
         </Cta>
       </Container>
 
       <Container className="pb-section">
-        <div className="grid gap-10 md:grid-cols-2">
-          <div>
-            <h2 className="text-h2">Could this be right for you?</h2>
-            <p className="mt-5 text-ink-500">
-              Treatment is suitable for adults in the UK with a BMI of{" "}
-              {eligibility.bmiThreshold} or above — or{" "}
-              {eligibility.bmiThresholdWithCondition} and above if you also have a
-              weight-related condition such as high blood pressure, pre-diabetes or
-              sleep apnoea.
-            </p>
-            <p className="mt-4 text-ink-500">
-              The eligibility check takes about two minutes and tells you honestly
-              either way. If it isn&apos;t right for you, we&apos;ll say so.
-            </p>
-            <Button href="/am-i-eligible" className="mt-7">
-              Check your eligibility
-            </Button>
-          </div>
-
-          <div className="rounded-card border border-sand-200 bg-white p-7 shadow-card">
-            <h2 className="text-h3">Rather ask a question first?</h2>
-            <p className="mt-3 text-ink-500">
-              That&apos;s completely fine. Send a message and Akila will come back to
-              you herself.
-            </p>
-            <dl className="mt-5 space-y-2 text-sm text-ink-500">
-              {contact.responseHours.map((h) => (
-                <div key={h.days} className="flex justify-between gap-4">
-                  <dt>{h.days}</dt>
-                  <dd className="font-medium text-ink-700">{h.hours}</dd>
-                </div>
-              ))}
-            </dl>
-            <Button href="/contact" variant="ghost" className="mt-6">
-              Send a message
-            </Button>
-          </div>
+        <div className="max-w-3xl">
+          <h2 className="text-h2">Could this be right for you?</h2>
+          <p className="mt-5 text-ink-500">
+            The AMH Wellness starting criteria are adults living in the UK with a BMI of{" "}
+            {eligibility.bmiThreshold} or above — or{" "}
+            {eligibility.bmiThresholdWithCondition} and above if you also have a
+            weight-related condition, such as {eligibility.relatedConditions
+              .slice(0, 3)
+              .join(", ")
+              .toLowerCase()}.
+          </p>
+          <p className="mt-4 text-ink-500">
+            The eligibility check takes about two minutes and tells you honestly
+            whether you meet those starting criteria. Akila makes the final
+            suitability decision after speaking with you.
+          </p>
+          <Button href="/am-i-eligible" className="mt-7">
+            Check your eligibility
+          </Button>
         </div>
       </Container>
     </>
