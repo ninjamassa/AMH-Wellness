@@ -120,9 +120,9 @@ export const siteConfig = {
     },
     {
       step: 5,
-      title: "We review every four weeks — and you can reach me between",
+      title: "Review every four weeks — with message access between appointments",
       detail:
-        "Each pen lasts four weeks, so we speak every four weeks to review how you're getting on. In between, you can message me any time with a question or a worry.",
+        "Each pen lasts four weeks, so you and Akila speak every four weeks to review how you're getting on. Between appointments, you can message her with a question or worry.",
     },
   ],
 
