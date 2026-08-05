@@ -9,13 +9,12 @@ const now = startedAt + MIN_ENQUIRY_COMPLETION_MS;
 const validSubmission = {
   name: "  A Patient  ",
   email: "  patient@example.com  ",
-  message: "  I would like to ask about the service.  ",
   website: "",
   startedAt: String(startedAt),
 };
 
 describe("enquiry validation", () => {
-  it("accepts and trims the three non-health enquiry fields", () => {
+  it("accepts and trims the two contact-request fields", () => {
     const result = validateEnquirySubmission(validSubmission, now);
 
     expect(result).toEqual({
@@ -23,14 +22,13 @@ describe("enquiry validation", () => {
       data: {
         name: "A Patient",
         email: "patient@example.com",
-        message: "I would like to ask about the service.",
       },
     });
   });
 
   it("returns typed field errors for invalid visible fields", () => {
     const result = validateEnquirySubmission(
-      { ...validSubmission, name: "", email: "not-an-email", message: "" },
+      { ...validSubmission, name: "", email: "not-an-email" },
       now
     );
 
@@ -38,8 +36,25 @@ describe("enquiry validation", () => {
     if (!result.ok && result.reason === "invalid") {
       expect(result.fieldErrors.name).toBeTruthy();
       expect(result.fieldErrors.email).toBeTruthy();
-      expect(result.fieldErrors.message).toBeTruthy();
     }
+  });
+
+  it("does not copy an unexpected free-text field into the validated payload", () => {
+    const result = validateEnquirySubmission(
+      {
+        ...validSubmission,
+        message: "Health information must not be delivered by email.",
+      },
+      now
+    );
+
+    expect(result).toEqual({
+      ok: true,
+      data: {
+        name: "A Patient",
+        email: "patient@example.com",
+      },
+    });
   });
 
   it("treats a filled honeypot as spam", () => {

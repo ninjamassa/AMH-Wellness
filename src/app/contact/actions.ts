@@ -2,11 +2,15 @@
 
 import type { EnquiryActionState } from "@/lib/enquiry";
 import { validateEnquirySubmission } from "@/lib/enquiry";
+import {
+  deliverEnquiryContact,
+  resendConfigFromEnvironment,
+} from "@/lib/enquiry-delivery";
 
 /**
- * The validation and anti-spam boundary for general enquiries. Delivery is
- * deliberately left to the integrations phase; returning an unavailable state
- * prevents the scaffold from claiming a message was sent when it was not.
+ * The validation and anti-spam boundary for contact requests. The external
+ * provider receives only name and email; free text and health data are not part
+ * of this action's contract and are never logged.
  */
 export async function submitEnquiry(
   _previousState: EnquiryActionState,
@@ -16,7 +20,6 @@ export async function submitEnquiry(
     {
       name: formData.get("name"),
       email: formData.get("email"),
-      message: formData.get("message"),
       website: formData.get("website"),
       startedAt: formData.get("startedAt"),
     },
@@ -35,6 +38,13 @@ export async function submitEnquiry(
     return { status: "delivery-unavailable" };
   }
 
-  // TODO(integrations-agent): deliver validation.data without logging it.
-  return { status: "delivery-unavailable" };
+  // TODO(human): Confirm Resend, verify the sending domain, and provide both
+  // mailbox addresses before treating online contact delivery as available.
+  const config = resendConfigFromEnvironment(process.env);
+  if (config === null) return { status: "delivery-unavailable" };
+
+  const delivery = await deliverEnquiryContact(validation.data, config);
+  return delivery.ok
+    ? { status: "success" }
+    : { status: "delivery-unavailable" };
 }

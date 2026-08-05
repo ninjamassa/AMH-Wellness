@@ -13,6 +13,7 @@ import type {
   EnquiryField,
   EnquiryFieldErrors,
 } from "@/lib/enquiry";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 
 const initialState: EnquiryActionState = { status: "idle" };
 
@@ -25,6 +26,7 @@ function fieldError(
 
 export function EnquiryForm() {
   const startedAtRef = useRef<HTMLInputElement>(null);
+  const trackedSuccessRef = useRef(false);
   const [state, formAction, isPending] = useActionState(
     submitEnquiry,
     initialState
@@ -38,6 +40,31 @@ export function EnquiryForm() {
       startedAtRef.current.value = String(Date.now());
     }
   }, []);
+
+  useEffect(() => {
+    if (state.status === "success" && !trackedSuccessRef.current) {
+      trackedSuccessRef.current = true;
+      trackAnalyticsEvent({
+        name: "enquiry_submitted",
+        sourcePage: "/contact",
+      });
+    }
+  }, [state.status]);
+
+  if (state.status === "success") {
+    return (
+      <section
+        role="status"
+        className="max-w-2xl rounded-card border border-teal-200 bg-teal-50 p-6 shadow-card sm:p-9"
+      >
+        <h2 className="text-h2">Your contact request has been sent</h2>
+        <p className="mt-4 max-w-reading text-ink-700">
+          Akila will reply by email. No free-text message or health information
+          was submitted through this form.
+        </p>
+      </section>
+    );
+  }
 
   return (
     <form
@@ -56,6 +83,12 @@ export function EnquiryForm() {
         />
       </div>
       <input ref={startedAtRef} type="hidden" name="startedAt" defaultValue="" />
+
+      <p className="mb-7 max-w-reading text-sm text-ink-500">
+        Leave your name and email address and Akila will reply. Clinical details
+        are collected through the secure booking process, so this form does not
+        ask for a message or health information.
+      </p>
 
       <div>
         <label htmlFor="enquiry-name" className={fieldLabelClass}>Name</label>
@@ -97,32 +130,13 @@ export function EnquiryForm() {
         ) : null}
       </div>
 
-      <div className="mt-6">
-        <label htmlFor="enquiry-message" className={fieldLabelClass}>Your question</label>
-        <textarea
-          id="enquiry-message"
-          name="message"
-          rows={6}
-          maxLength={3_000}
-          aria-invalid={fieldError(errors, "message") ? true : undefined}
-          aria-describedby={fieldError(errors, "message") ? "enquiry-message-error" : undefined}
-          required
-          className={fieldControlClass}
-        />
-        {fieldError(errors, "message") ? (
-          <p id="enquiry-message-error" role="alert" className={fieldErrorClass}>
-            {fieldError(errors, "message")}
-          </p>
-        ) : null}
-      </div>
-
       {state.status === "delivery-unavailable" ? (
         <p
           role="status"
           className="mt-6 rounded-control border border-indigo-200 bg-indigo-50 px-4 py-3 text-sm text-indigo-700"
         >
-          Online enquiry delivery is not connected yet. Your message has not
-          been sent.
+          Online contact delivery is unavailable. Your details have not been
+          sent. Please try again later.
         </p>
       ) : null}
 
@@ -131,7 +145,7 @@ export function EnquiryForm() {
         disabled={isPending}
         className={buttonClassName("primary", "mt-7")}
       >
-        {isPending ? "Sending…" : "Send enquiry"}
+        {isPending ? "Sending…" : "Ask Akila to reply"}
       </button>
     </form>
   );

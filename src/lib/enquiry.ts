@@ -2,13 +2,12 @@ import { z } from "zod";
 
 export const MIN_ENQUIRY_COMPLETION_MS = 1_500;
 
-export const ENQUIRY_FIELDS = ["name", "email", "message"] as const;
+export const ENQUIRY_FIELDS = ["name", "email"] as const;
 export type EnquiryField = (typeof ENQUIRY_FIELDS)[number];
 
 export interface EnquirySubmission {
   name: string;
   email: string;
-  message: string;
 }
 
 export type EnquiryFieldErrors = Partial<Record<EnquiryField, string>>;
@@ -16,6 +15,7 @@ export type EnquiryFieldErrors = Partial<Record<EnquiryField, string>>;
 export type EnquiryActionState =
   | { status: "idle" }
   | { status: "invalid"; fieldErrors: EnquiryFieldErrors }
+  | { status: "success" }
   | { status: "delivery-unavailable" };
 
 export type EnquiryValidationResult =
@@ -34,11 +34,6 @@ const enquirySubmissionSchema = z.object({
     .trim()
     .max(254, "Email address is too long")
     .email("Enter a valid email address"),
-  message: z
-    .string()
-    .trim()
-    .min(1, "Enter your question")
-    .max(3_000, "Message is too long"),
   website: z.string(),
   startedAt: z
     .union([z.string(), z.number()])
@@ -52,7 +47,7 @@ function visibleFieldErrors(error: z.ZodError): EnquiryFieldErrors {
   for (const issue of error.issues) {
     const field = issue.path[0];
     if (
-      (field === "name" || field === "email" || field === "message") &&
+      (field === "name" || field === "email") &&
       fieldErrors[field] === undefined
     ) {
       fieldErrors[field] = issue.message;
@@ -93,7 +88,6 @@ export function validateEnquirySubmission(
     data: {
       name: parsed.data.name,
       email: parsed.data.email,
-      message: parsed.data.message,
     },
   };
 }
