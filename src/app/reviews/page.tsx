@@ -34,10 +34,9 @@ export default function ReviewsPage() {
       <AnswerFirst question={answerBlockQuestions["/reviews"]}>
         <p>
           AMH Wellness does not yet have any patient reviews approved for
-          publication. Akila will only publish a review when the patient has given
-          permission, using a first name only. Until then, this page will not fill
-          the gap with invented testimonials; it explains what you can verify about
-          the support instead.
+          publication. No review will appear until the patient has given permission,
+          and Akila still needs to confirm how attribution will work. Until then,
+          this page explains the support commitments and credentials you can verify.
         </p>
       </AnswerFirst>
 
@@ -46,10 +45,10 @@ export default function ReviewsPage() {
           <section>
             <h2 className="text-h2">Why are there no quotes here yet?</h2>
             <p className="mt-5 text-ink-500">
-              No review has been supplied with confirmed publication consent. A
-              real first-hand account matters because this page is meant to show
-              whether the support feels personal and consistent. Writing a
-              plausible quote would undermine that purpose.
+              No review has been supplied with confirmed publication consent. This
+              page is meant to show whether support feels personal and consistent,
+              so it will remain empty until there is a real account that the patient
+              has agreed can be published.
             </p>
           </section>
 
@@ -67,14 +66,14 @@ export default function ReviewsPage() {
           <section>
             <h2 className="text-h2">What will future reviews focus on?</h2>
             <p className="mt-5 text-ink-500">
-              Reviews should describe the support experience rather than promise a
-              particular weight result. They will use the patient&apos;s first name and
-              appear only when permission to publish is on file.
+              Any future review should describe the support experience rather than
+              promise a particular weight result. The attribution method has not yet
+              been decided and must be agreed with the patient before publication.
             </p>
           </section>
 
           <Button href="/am-i-eligible">Check if you may be eligible</Button>
-          {/* TODO(human): Akila must supply genuine support-focused reviews with first-name attribution and publication consent on file. */}
+          {/* TODO(human): Akila must supply genuine support-focused reviews with an approved attribution method and publication consent on file. */}
         </div>
       </Container>
     </>
