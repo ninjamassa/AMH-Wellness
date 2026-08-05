@@ -26,15 +26,15 @@ export const internalLinkPlan: Partial<Record<SeoRoute, readonly InternalLink[]>
       href: "/support-after-injections",
       label: "Read about support after weight loss injections",
     },
-    { href: "/am-i-eligible", label: "Check whether you may be eligible" },
+    { href: "/am-i-eligible", label: "Check if you may be eligible" },
   ],
   "/mounjaro": [
     { href: "/support-after-injections", label: "Plan for coming off Mounjaro" },
-    { href: "/am-i-eligible", label: "Check whether you may be eligible" },
+    { href: "/am-i-eligible", label: "Check if you may be eligible" },
   ],
   "/wegovy": [
     { href: "/support-after-injections", label: "Plan for support after Wegovy" },
-    { href: "/am-i-eligible", label: "Check whether you may be eligible" },
+    { href: "/am-i-eligible", label: "Check if you may be eligible" },
   ],
   "/blog": [
     { href: "/blog/mounjaro-vs-wegovy", label: "Mounjaro vs Wegovy" },

@@ -82,7 +82,7 @@ export default function HomePage() {
               the start.
             </p>
             <div className="mt-9">
-              <Button href="/am-i-eligible">Check if you&apos;re eligible</Button>
+              <Button href="/am-i-eligible">Check if you may be eligible</Button>
             </div>
             <p className="mt-4 text-sm text-ink-500">
               Takes about two minutes. Akila confirms suitability in consultation.
@@ -143,7 +143,7 @@ export default function HomePage() {
             suitability decision after speaking with you.
           </p>
           <Button href="/am-i-eligible" className="mt-7">
-            Check your eligibility
+            Check if you may be eligible
           </Button>
         </div>
       </Container>

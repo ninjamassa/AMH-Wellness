@@ -139,7 +139,7 @@ export default function WegovyPage() {
       <Container className="pb-section">
         <Cta
           heading="Could Wegovy be suitable for you?"
-          primary={{ href: "/am-i-eligible", label: "Check your eligibility" }}
+          primary={{ href: "/am-i-eligible", label: "Check if you may be eligible" }}
         >
           <p>
             The short check compares your answers with AMH Wellness&apos;s starting

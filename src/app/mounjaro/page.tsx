@@ -138,7 +138,7 @@ export default function MounjaroPage() {
       <Container className="pb-section">
         <Cta
           heading="Could Mounjaro be suitable for you?"
-          primary={{ href: "/am-i-eligible", label: "Check your eligibility" }}
+          primary={{ href: "/am-i-eligible", label: "Check if you may be eligible" }}
         >
           <p>
             The short check compares your answers with AMH Wellness&apos;s starting

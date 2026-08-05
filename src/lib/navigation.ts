@@ -71,7 +71,7 @@ export const footerNav: { heading: string; items: NavItem[] }[] = [
  * gain lead information."
  */
 export const primaryCta = {
-  label: "Check if you're eligible",
+  label: "Check if you may be eligible",
   href: "/am-i-eligible",
   supporting: "Takes about two minutes",
 } as const;

@@ -164,7 +164,7 @@ export default function SupportAfterInjectionsPage() {
       <Container className="pb-section">
         <Cta
           heading="Would you like a plan for treatment and what comes after?"
-          primary={{ href: "/am-i-eligible", label: "Check your eligibility" }}
+          primary={{ href: "/am-i-eligible", label: "Check if you may be eligible" }}
         >
           <p>
             The eligibility check is a private first step. If treatment may be
