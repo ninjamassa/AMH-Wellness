@@ -44,11 +44,11 @@ export default function WeightLossInjectionsPage() {
 
       <AnswerFirst question={answerBlockQuestions["/weight-loss-injections"]}>
         <p>
-          Weight loss injections are prescription medicines used alongside
-          changes to diet and activity to help manage weight. At AMH Wellness,
-          treatment includes a video consultation with Akila Dungarwalla MPharmS,
-          a plan made for you, reviews every four weeks and message access to the
-          same prescribing pharmacist between appointments.
+          At AMH Wellness, weight loss injections are prescription medicines used
+          alongside changes to diet and activity, with support from Akila
+          Dungarwalla MPharmS. Treatment includes a video consultation, a plan made
+          for you, reviews every four weeks and message access to the same
+          prescribing pharmacist between appointments.
         </p>
       </AnswerFirst>
 
@@ -105,8 +105,8 @@ export default function WeightLossInjectionsPage() {
             <p className="mt-5 text-ink-500">
               Maintenance is discussed from the beginning. Your plan includes
               nutrition guidance and support for the routines you will need when
-              the medicine is no longer affecting your appetite. You would still be
-              speaking to Akila herself about that stage of care.
+              the medicine is no longer affecting your appetite. Akila herself
+              makes that plan with you before treatment ends.
             </p>
           </section>
 

@@ -49,11 +49,11 @@ const whatItIncludes = [
   },
   {
     title: "A chance to notice what is changing",
-    body: "Hunger, portions and routines may feel different after treatment. One-to-one coaching gives you somewhere to review those changes and adjust your plan with Akila.",
+    body: "Hunger, portions and routines may feel different after treatment. Before prescriptions end, you and Akila can decide what to monitor and how the maintenance plan should respond.",
   },
   {
     title: "Support from the clinician who knows you",
-    body: "Aftercare is with Akila Dungarwalla MPharmS, the same prescribing pharmacist who has reviewed you during treatment. You do not have to explain everything again to a new person.",
+    body: "Your maintenance planning is with Akila Dungarwalla MPharmS, the same prescribing pharmacist who has reviewed you during treatment. You do not have to explain everything again to a new person.",
   },
 ];
 
@@ -80,11 +80,11 @@ export default function SupportAfterInjectionsPage() {
       </Container>
 
       <AnswerFirst question={answerBlockQuestions["/support-after-injections"]}>
-        When you stop Mounjaro, its effect on appetite ends and weight regain can
-        happen; this is a recognised pattern, not a personal failure. AMH Wellness
-        plans for that point from your first consultation, with nutrition guidance,
-        a maintenance plan and continued one-to-one support from {clinician.name}{" "}
-        {clinician.credentials}.
+        At AMH Wellness, stopping Mounjaro is planned for because its effect on
+        appetite ends and weight regain can happen; this is a recognised pattern,
+        not a personal failure. Planning starts at your first consultation, with
+        nutrition guidance and a maintenance plan developed one-to-one with{" "}
+        {clinician.name} {clinician.credentials}.
       </AnswerFirst>
 
       <Container className="py-section">
