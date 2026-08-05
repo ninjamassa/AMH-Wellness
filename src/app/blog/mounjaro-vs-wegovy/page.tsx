@@ -2,6 +2,7 @@ import { AnswerFirst } from "@/components/sections/AnswerFirst";
 import { ComparisonTable, type ComparisonRow } from "@/components/sections/ComparisonTable";
 import { RelatedLinks } from "@/components/sections/RelatedLinks";
 import { JsonLd } from "@/components/schema/JsonLd";
+import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { answerBlockQuestions } from "@/lib/answer-blocks";
 import { internalLinkPlan } from "@/lib/internal-links";
@@ -173,6 +174,7 @@ export default function MounjaroVsWegovyPage() {
             .
           </p>
           {/* TODO(human): Akila must clinically review this comparison and confirm oral Wegovy supply before any tablet option is added. */}
+          <Button href="/am-i-eligible">Check if you may be eligible</Button>
         </div>
       </Container>
 

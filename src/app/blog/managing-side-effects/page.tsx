@@ -1,6 +1,7 @@
 import { AnswerFirst } from "@/components/sections/AnswerFirst";
 import { RelatedLinks } from "@/components/sections/RelatedLinks";
 import { JsonLd } from "@/components/schema/JsonLd";
+import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { answerBlockQuestions } from "@/lib/answer-blocks";
 import { internalLinkPlan } from "@/lib/internal-links";
@@ -150,6 +151,7 @@ export default function SideEffectsPage() {
             </ul>
           </div>
           {/* TODO(human): Akila must clinically review the side-effect self-care and urgent escalation wording before publication. */}
+          <Button href="/am-i-eligible">Check if you may be eligible</Button>
         </article>
       </Container>
 
