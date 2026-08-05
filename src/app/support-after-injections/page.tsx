@@ -1,7 +1,5 @@
-import Link from "next/link";
 import { AnswerFirst } from "@/components/sections/AnswerFirst";
 import { Cta } from "@/components/sections/Cta";
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { answerBlockQuestions } from "@/lib/answer-blocks";
 import { pageSeo } from "@/lib/page-seo";
@@ -42,20 +40,20 @@ export const metadata = buildMetadata(pageSeo["/support-after-injections"]);
 
 const whatItIncludes = [
   {
-    title: "A maintenance plan built from day one",
-    body: "We start talking about how you'll come off treatment at your first consultation — not in your last one. You'll know the plan long before you need it.",
+    title: "A plan before treatment ends",
+    body: "Maintenance is discussed from your first consultation, rather than left until the final prescription. You and Akila can plan for the changes that may follow when treatment stops.",
   },
   {
-    title: "Nutrition coaching that continues",
-    body: "Protein targets, meal structure, vitamins and minerals. The habits that hold your progress in place when the appetite suppression stops.",
+    title: "Nutrition guidance you can keep using",
+    body: "You receive help with meal planning, protein and everyday food choices. The aim is to build a way of eating that does not depend on the medicine reducing your appetite.",
   },
   {
-    title: "A gradual, clinically managed step down",
-    body: "Where it's appropriate, we reduce treatment gradually rather than stopping abruptly, and review how you're getting on at each stage.",
+    title: "A chance to notice what is changing",
+    body: "Hunger, portions and routines may feel different after treatment. One-to-one coaching gives you somewhere to review those changes and adjust your plan with Akila.",
   },
   {
-    title: "You can still reach me afterwards",
-    body: "Coming off treatment isn't the end of the relationship. Questions and worries don't stop just because the prescriptions do.",
+    title: "Support from the clinician who knows you",
+    body: "Aftercare is with Akila Dungarwalla MPharmS, the same prescribing pharmacist who has reviewed you during treatment. You do not have to explain everything again to a new person.",
   },
 ];
 
@@ -73,22 +71,20 @@ export default function SupportAfterInjectionsPage() {
             Support after injections
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-500">
-            The hardest part of weight loss treatment isn&apos;t starting it. It&apos;s
-            what happens when it stops — and almost nobody prepares you for that.
-            This is the part of the service Akila built AMH Wellness around.
+            If you are worried that stopping Mounjaro or Wegovy means starting
+            again from the beginning, you are not the only one. AMH Wellness
+            treats maintenance as part of your care, not a conversation saved
+            for the end.
           </p>
-          <Button href="/am-i-eligible" className="mt-9">
-            Check if you&apos;re eligible
-          </Button>
         </div>
       </Container>
 
       <AnswerFirst question={answerBlockQuestions["/support-after-injections"]}>
-        AMH Wellness includes aftercare as part of the programme, not as an extra.
-        Your maintenance plan is built from your first consultation, nutrition
-        coaching continues after treatment ends, and you keep direct access to{" "}
-        {clinician.name}, the same prescribing pharmacist who has looked after you
-        throughout.
+        When you stop Mounjaro, its effect on appetite ends and weight regain can
+        happen; this is a recognised pattern, not a personal failure. AMH Wellness
+        plans for that point from your first consultation, with nutrition guidance,
+        a maintenance plan and continued one-to-one support from {clinician.name}{" "}
+        {clinician.credentials}.
       </AnswerFirst>
 
       <Container className="py-section">
@@ -96,19 +92,54 @@ export default function SupportAfterInjectionsPage() {
           <h2 className="text-h2">
             Why weight often comes back — and why it isn&apos;t your fault
           </h2>
-          <p className="mt-5 text-ink-500">
-            {/* TODO(content-agent): 3–4 paragraphs. Be honest and clinical, not
-                reassuring-vague. Cover: appetite returning as the medication
-                clears; muscle lost alongside fat if protein intake was too low;
-                habits that were never established because the medication was
-                doing the work; and the fact that this is a well-documented
-                pattern rather than a personal failure. Cite the BMJ coverage of
-                patients needing support for a year after stopping. Akila to
-                review the clinical content. */}
-            TODO(content-agent): the honest explanation. This is the section that
-            earns her trust — get it right and the rest of the page barely has to
-            sell.
-          </p>
+          <div className="mt-5 max-w-reading space-y-5 text-ink-500">
+            <p>
+              Mounjaro and Wegovy affect appetite and how full you feel while you
+              are taking them. When the medicine is stopped, that effect does not
+              continue. Hunger can become more noticeable again, and portions that
+              felt comfortable during treatment may no longer feel enough.
+            </p>
+            <p>
+              Weight regain after stopping has been seen in clinical trials of
+              both semaglutide and tirzepatide. It does not mean that everyone
+              regains the same amount, or that your work was wasted. It means the
+              change is common enough to plan for. NICE says people should receive
+              advice and regular support for at least a year after weight-management
+              treatment ends.
+            </p>
+            <p>
+              Weight loss can include some loss of lean tissue as well as fat.
+              Protecting your strength and nutrition therefore matters while your
+              weight is changing. Food choices, protein and suitable activity should
+              be considered as part of a plan made for you, rather than reduced to
+              one target that everyone is expected to follow.
+            </p>
+            <p>
+              There can also be a practical gap. If the medicine made eating less
+              feel straightforward but nobody helped you build meals and routines
+              for afterwards, old patterns can return as hunger changes. That is a
+              gap in the support you received, not a lack of willpower.
+            </p>
+            <p className="text-sm">
+              Sources: {" "}
+              <a
+                href="https://www.nice.org.uk/guidance/qs212/chapter/Quality-statement-7-Advice-and-support-after-stopping-medicines-for-weight-management-or-completing-behavioural-interventions"
+                className="font-medium text-teal-700 underline underline-offset-4"
+              >
+                NICE guidance on support after treatment
+              </a>{" "}
+              and {" "}
+              <a
+                href="https://www.bmj.com/content/390/bmj.r1646"
+                className="font-medium text-teal-700 underline underline-offset-4"
+              >
+                BMJ coverage of the recommendation
+              </a>
+              .
+            </p>
+            {/* TODO(human): Akila must clinically review this explanation before publication. */}
+            {/* TODO(human): Akila must confirm AMH Wellness's aftercare duration, review cadence, access after prescriptions end and whether it has a separate price. */}
+          </div>
         </div>
       </Container>
 
@@ -129,38 +160,15 @@ export default function SupportAfterInjectionsPage() {
 
       <Container className="pb-section">
         <Cta
-          heading="Already on treatment somewhere else?"
+          heading="Would you like a plan for treatment and what comes after?"
           primary={{ href: "/am-i-eligible", label: "Check your eligibility" }}
-          secondary={{ href: "/contact", label: "Or just ask a question first" }}
         >
           <p>
-            You don&apos;t have to have started with us. If you&apos;re partway through
-            treatment elsewhere and worried about what comes next, that&apos;s exactly
-            the conversation Akila wants to have with you.
+            The eligibility check is a private first step. If treatment may be
+            suitable, the next conversation is with Akila herself, including what
+            you have tried before and what support you need for the longer term.
           </p>
         </Cta>
-      </Container>
-
-      <Container className="pb-section">
-        <h2 className="text-h2">Read more</h2>
-        <ul className="mt-4 space-y-1">
-          <li>
-            <Link
-              href="/blog/keeping-weight-off-after-stopping"
-              className="inline-flex min-h-touch items-center text-lg text-teal-700 underline underline-offset-4 hover:text-teal-700"
-            >
-              Keeping weight off after stopping
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/blog/protein-and-nutrition-on-injections"
-              className="inline-flex min-h-touch items-center text-lg text-teal-700 underline underline-offset-4 hover:text-teal-700"
-            >
-              Protein and nutrition on injections
-            </Link>
-          </li>
-        </ul>
       </Container>
     </>
   );
