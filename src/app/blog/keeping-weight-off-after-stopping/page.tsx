@@ -7,6 +7,7 @@ import { internalLinkPlan } from "@/lib/internal-links";
 import { pageSeo } from "@/lib/page-seo";
 import { breadcrumbSchema, buildGraph } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
+import { ArticleReadTracker } from "@/components/integrations/ArticleReadTracker";
 
 /**
  * ★ FLAGSHIP PAGE — this one carries the business case.
@@ -44,6 +45,7 @@ export default function KeepingWeightOffPage() {
   return (
     <>
       <JsonLd graph={breadcrumbGraph} />
+      <ArticleReadTracker slug="keeping-weight-off-after-stopping" />
       <Container className="py-section">
         <h1 className="text-h1">Keeping weight off after stopping</h1>
       </Container>

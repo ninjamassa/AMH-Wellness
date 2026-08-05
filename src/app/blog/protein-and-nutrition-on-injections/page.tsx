@@ -7,6 +7,7 @@ import { internalLinkPlan } from "@/lib/internal-links";
 import { pageSeo } from "@/lib/page-seo";
 import { breadcrumbSchema, buildGraph } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
+import { ArticleReadTracker } from "@/components/integrations/ArticleReadTracker";
 
 /**
  * STAGE     supported
@@ -42,6 +43,7 @@ export default function NutritionPage() {
   return (
     <>
       <JsonLd graph={breadcrumbGraph} />
+      <ArticleReadTracker slug="protein-and-nutrition-on-injections" />
       <Container className="py-section">
         <h1 className="text-h1">Protein and nutrition on injections</h1>
       </Container>

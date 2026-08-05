@@ -7,6 +7,7 @@ import { internalLinkPlan } from "@/lib/internal-links";
 import { pageSeo } from "@/lib/page-seo";
 import { breadcrumbSchema, buildGraph } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
+import { ArticleReadTracker } from "@/components/integrations/ArticleReadTracker";
 
 /**
  * STAGE     considering
@@ -42,6 +43,7 @@ export default function MounjaroVsWegovyPage() {
   return (
     <>
       <JsonLd graph={breadcrumbGraph} />
+      <ArticleReadTracker slug="mounjaro-vs-wegovy" />
       <Container className="py-section">
         <h1 className="text-h1">Mounjaro vs Wegovy</h1>
       </Container>

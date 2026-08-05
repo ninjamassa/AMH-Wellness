@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import { JsonLd } from "@/components/schema/JsonLd";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
+import { AnalyticsConsent } from "@/components/integrations/AnalyticsConsent";
+import { parseGaMeasurementId } from "@/lib/analytics";
 import { buildGraph, clinicianSchema, organisationSchema, websiteSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site-config";
 import "./globals.css";
@@ -33,6 +35,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const graph = buildGraph(organisationSchema(), clinicianSchema(), websiteSchema());
+  // TODO(human): Add the production GA4 measurement ID only after the privacy
+  // policy is approved and Akila's analytics account is ready.
+  const measurementId = parseGaMeasurementId(
+    process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+  );
 
   return (
     <html lang="en-GB" className={inter.variable}>
@@ -44,6 +51,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
+        {measurementId === null ? null : (
+          <AnalyticsConsent measurementId={measurementId} />
+        )}
       </body>
     </html>
   );
