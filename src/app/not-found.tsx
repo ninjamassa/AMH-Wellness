@@ -3,8 +3,8 @@ import { Container } from "@/components/ui/Container";
 
 export default function NotFound() {
   return (
-    <Container className="py-[--spacing-section]">
-      <h1 className="text-[length:--text-h1]">Page not found</h1>
+    <Container className="py-section">
+      <h1 className="text-h1">Page not found</h1>
       <p className="mt-4 max-w-xl text-ink-500">
         That page doesn&apos;t exist, or it may have moved. You can start from the
         homepage, or check whether our service is right for you.

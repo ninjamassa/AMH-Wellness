@@ -24,8 +24,8 @@ export const metadata = buildMetadata(pageSeo["/about"]);
 export default function AboutPage() {
   return (
     <>
-      <Container className="py-[--spacing-section]">
-        <h1 className="text-[length:--text-h1]">About Akila</h1>
+      <Container className="py-section">
+        <h1 className="text-h1">About Akila</h1>
       </Container>
 
       <AnswerFirst question={answerBlockQuestions["/about"]}>
@@ -34,7 +34,7 @@ export default function AboutPage() {
         <p>Content in progress.</p>
       </AnswerFirst>
 
-      <Container className="py-[--spacing-section]">
+      <Container className="py-section">
         {/* TODO(content-agent): page body per the brief above. */}
       </Container>
     </>

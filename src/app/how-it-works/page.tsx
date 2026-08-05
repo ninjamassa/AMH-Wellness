@@ -38,8 +38,8 @@ export default function HowItWorksPage() {
   return (
     <>
       <JsonLd graph={howToGraph} />
-      <Container className="py-[--spacing-section]">
-        <h1 className="text-[length:--text-h1]">How it works</h1>
+      <Container className="py-section">
+        <h1 className="text-h1">How it works</h1>
       </Container>
 
       <AnswerFirst question={answerBlockQuestions["/how-it-works"]}>
@@ -50,7 +50,7 @@ export default function HowItWorksPage() {
 
       <JourneySteps />
 
-      <Container className="pb-[--spacing-section]">
+      <Container className="pb-section">
         {/* TODO(content-agent): supporting page body per the brief above. */}
       </Container>
     </>

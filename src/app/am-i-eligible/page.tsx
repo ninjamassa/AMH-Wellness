@@ -26,8 +26,8 @@ export const metadata = buildMetadata(pageSeo["/am-i-eligible"]);
 export default function EligibilityPage() {
   return (
     <>
-      <Container className="py-[--spacing-section]">
-        <h1 className="text-[length:--text-h1]">Am I eligible?</h1>
+      <Container className="py-section">
+        <h1 className="text-h1">Am I eligible?</h1>
       </Container>
 
       <AnswerFirst question={answerBlockQuestions["/am-i-eligible"]}>
@@ -36,7 +36,7 @@ export default function EligibilityPage() {
         <p>Content in progress.</p>
       </AnswerFirst>
 
-      <Container className="py-[--spacing-section]">
+      <Container className="py-section">
         <EligibilityFlow
           relatedConditions={siteConfig.eligibility.relatedConditions}
         />

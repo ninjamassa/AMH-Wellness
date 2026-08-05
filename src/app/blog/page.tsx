@@ -26,8 +26,8 @@ export const metadata = buildMetadata(pageSeo["/blog"]);
 export default function BlogPage() {
   return (
     <>
-      <Container className="py-[--spacing-section]">
-        <h1 className="text-[length:--text-h1]">Blog and resources</h1>
+      <Container className="py-section">
+        <h1 className="text-h1">Blog and resources</h1>
       </Container>
 
       <AnswerFirst question={answerBlockQuestions["/blog"]}>
@@ -36,7 +36,7 @@ export default function BlogPage() {
         <p>Content in progress.</p>
       </AnswerFirst>
 
-      <Container className="py-[--spacing-section]">
+      <Container className="py-section">
         {/* TODO(content-agent): page body per the brief above. */}
       </Container>
 

@@ -24,8 +24,8 @@ export const metadata = buildMetadata(pageSeo["/faqs"]);
 export default function FaqsPage() {
   return (
     <>
-      <Container className="py-[--spacing-section]">
-        <h1 className="text-[length:--text-h1]">Frequently asked questions</h1>
+      <Container className="py-section">
+        <h1 className="text-h1">Frequently asked questions</h1>
       </Container>
 
       <AnswerFirst question={answerBlockQuestions["/faqs"]}>
@@ -34,7 +34,7 @@ export default function FaqsPage() {
         <p>Content in progress.</p>
       </AnswerFirst>
 
-      <Container className="py-[--spacing-section]">
+      <Container className="py-section">
         {/* TODO(content-agent): Render the final FAQ collection here, then
             pass that exact same collection to faqSchema(). Structured answers
             must never differ from or exist without the visible answers. */}

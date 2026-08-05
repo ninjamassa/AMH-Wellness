@@ -23,12 +23,16 @@ export function AnswerFirst({
       <section
         aria-label={question}
         data-answer-block
-        className="rounded-[--radius-card] border border-teal-200 bg-teal-50 p-6 sm:p-8"
+        className="relative overflow-hidden rounded-card border border-teal-200 bg-teal-50 p-6 shadow-card sm:p-8"
       >
-        <p className="text-sm font-semibold uppercase tracking-wide text-teal-700">
+        <span
+          aria-hidden="true"
+          className="absolute inset-y-0 left-0 w-1.5 bg-teal-600"
+        />
+        <p className="text-sm font-semibold tracking-wide text-teal-700">
           {question}
         </p>
-        <div className="mt-3 text-lg leading-relaxed text-ink-700">{children}</div>
+        <div className="mt-3 max-w-reading text-body-lg text-ink-700">{children}</div>
       </section>
     </Container>
   );

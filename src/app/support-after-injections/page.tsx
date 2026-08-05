@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AnswerFirst } from "@/components/sections/AnswerFirst";
+import { Cta } from "@/components/sections/Cta";
 import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { answerBlockQuestions } from "@/lib/answer-blocks";
@@ -63,12 +64,12 @@ export default function SupportAfterInjectionsPage() {
 
   return (
     <>
-      <Container className="py-[--spacing-section]">
+      <Container className="py-section">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-wide text-teal-600">
             The part most services skip
           </p>
-          <h1 className="mt-4 text-[length:--text-display] leading-[1.08]">
+          <h1 className="mt-4 text-display">
             Support after injections
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-500">
@@ -90,9 +91,9 @@ export default function SupportAfterInjectionsPage() {
         throughout.
       </AnswerFirst>
 
-      <Container className="py-[--spacing-section]">
+      <Container className="py-section">
         <div className="max-w-3xl">
-          <h2 className="text-[length:--text-h2]">
+          <h2 className="text-h2">
             Why weight often comes back — and why it isn&apos;t your fault
           </h2>
           <p className="mt-5 text-ink-500">
@@ -111,52 +112,42 @@ export default function SupportAfterInjectionsPage() {
         </div>
       </Container>
 
-      <Container className="pb-[--spacing-section]">
-        <h2 className="text-[length:--text-h2]">What our aftercare actually involves</h2>
+      <Container className="pb-section">
+        <h2 className="text-h2">What our aftercare actually involves</h2>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {whatItIncludes.map((item) => (
             <div
               key={item.title}
-              className="rounded-[--radius-card] border border-sand-200 bg-white p-7"
+              className="rounded-card border border-sand-200 bg-white p-7 shadow-card"
             >
-              <h3 className="text-[length:--text-h3]">{item.title}</h3>
+              <h3 className="text-h3">{item.title}</h3>
               <p className="mt-3 text-ink-500">{item.body}</p>
             </div>
           ))}
         </div>
       </Container>
 
-      <Container className="pb-[--spacing-section]">
-        <section className="rounded-[--radius-card] bg-indigo-600 p-8 text-white sm:p-12">
-          <h2 className="max-w-2xl text-[length:--text-h2] text-white">
-            Already on treatment somewhere else?
-          </h2>
-          <p className="mt-5 max-w-2xl text-indigo-100">
+      <Container className="pb-section">
+        <Cta
+          heading="Already on treatment somewhere else?"
+          primary={{ href: "/am-i-eligible", label: "Check your eligibility" }}
+          secondary={{ href: "/contact", label: "Or just ask a question first" }}
+        >
+          <p>
             You don&apos;t have to have started with us. If you&apos;re partway through
             treatment elsewhere and worried about what comes next, that&apos;s exactly
             the conversation Akila wants to have with you.
           </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Button href="/am-i-eligible" variant="secondary">
-              Check your eligibility
-            </Button>
-            <Link
-              href="/contact"
-              className="inline-flex min-h-11 items-center text-white underline underline-offset-4 hover:text-teal-200"
-            >
-              Or just ask a question first
-            </Link>
-          </div>
-        </section>
+        </Cta>
       </Container>
 
-      <Container className="pb-[--spacing-section]">
-        <h2 className="text-[length:--text-h2]">Read more</h2>
-        <ul className="mt-6 space-y-3">
+      <Container className="pb-section">
+        <h2 className="text-h2">Read more</h2>
+        <ul className="mt-4 space-y-1">
           <li>
             <Link
               href="/blog/keeping-weight-off-after-stopping"
-              className="text-lg text-teal-700 underline underline-offset-4 hover:text-teal-600"
+              className="inline-flex min-h-touch items-center text-lg text-teal-700 underline underline-offset-4 hover:text-teal-700"
             >
               Keeping weight off after stopping
             </Link>
@@ -164,7 +155,7 @@ export default function SupportAfterInjectionsPage() {
           <li>
             <Link
               href="/blog/protein-and-nutrition-on-injections"
-              className="text-lg text-teal-700 underline underline-offset-4 hover:text-teal-600"
+              className="inline-flex min-h-touch items-center text-lg text-teal-700 underline underline-offset-4 hover:text-teal-700"
             >
               Protein and nutrition on injections
             </Link>

@@ -37,8 +37,8 @@ export default function MounjaroPage() {
   return (
     <>
       <JsonLd graph={serviceGraph} />
-      <Container className="py-[--spacing-section]">
-        <h1 className="text-[length:--text-h1]">Mounjaro</h1>
+      <Container className="py-section">
+        <h1 className="text-h1">Mounjaro</h1>
       </Container>
 
       <AnswerFirst question={answerBlockQuestions["/mounjaro"]}>
@@ -47,7 +47,7 @@ export default function MounjaroPage() {
         <p>Content in progress.</p>
       </AnswerFirst>
 
-      <Container className="py-[--spacing-section]">
+      <Container className="py-section">
         {/* TODO(content-agent): page body per the brief above. */}
       </Container>
 

@@ -19,10 +19,10 @@ export function TrustBar() {
 
   return (
     <Container>
-      <div className="rounded-[--radius-card] border border-sand-200 bg-white px-6 py-7">
+      <div className="rounded-card border border-sand-200 bg-white px-6 py-7 shadow-card sm:px-8">
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {signals.map((s) => (
-            <li key={s.label}>
+            <li key={s.label} className="border-l-2 border-teal-300 pl-4">
               <p className="text-sm font-semibold text-indigo-600">{s.label}</p>
               <p className="mt-1 text-sm text-ink-500">{s.detail}</p>
             </li>

@@ -23,8 +23,8 @@ export const metadata = buildMetadata(pageSeo["/reviews"]);
 export default function ReviewsPage() {
   return (
     <>
-      <Container className="py-[--spacing-section]">
-        <h1 className="text-[length:--text-h1]">Patient reviews</h1>
+      <Container className="py-section">
+        <h1 className="text-h1">Patient reviews</h1>
       </Container>
 
       <AnswerFirst question={answerBlockQuestions["/reviews"]}>
@@ -33,7 +33,7 @@ export default function ReviewsPage() {
         <p>Content in progress.</p>
       </AnswerFirst>
 
-      <Container className="py-[--spacing-section]">
+      <Container className="py-section">
         {/* TODO(content-agent): page body per the brief above. */}
       </Container>
     </>

@@ -24,8 +24,8 @@ export const metadata = buildMetadata(pageSeo["/contact"]);
 export default function ContactPage() {
   return (
     <>
-      <Container className="py-[--spacing-section]">
-        <h1 className="text-[length:--text-h1]">Contact us</h1>
+      <Container className="py-section">
+        <h1 className="text-h1">Contact us</h1>
       </Container>
 
       <AnswerFirst question={answerBlockQuestions["/contact"]}>
@@ -34,7 +34,7 @@ export default function ContactPage() {
         <p>Content in progress.</p>
       </AnswerFirst>
 
-      <Container className="py-[--spacing-section]">
+      <Container className="py-section">
         <EnquiryForm />
         {/* TODO(content-agent): supporting page body per the brief above. */}
       </Container>

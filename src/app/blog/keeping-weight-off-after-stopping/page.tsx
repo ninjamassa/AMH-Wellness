@@ -44,8 +44,8 @@ export default function KeepingWeightOffPage() {
   return (
     <>
       <JsonLd graph={breadcrumbGraph} />
-      <Container className="py-[--spacing-section]">
-        <h1 className="text-[length:--text-h1]">Keeping weight off after stopping</h1>
+      <Container className="py-section">
+        <h1 className="text-h1">Keeping weight off after stopping</h1>
       </Container>
 
       <AnswerFirst question={answerBlockQuestions[path]}>
@@ -54,7 +54,7 @@ export default function KeepingWeightOffPage() {
         <p>Content in progress.</p>
       </AnswerFirst>
 
-      <Container className="py-[--spacing-section]">
+      <Container className="py-section">
         {/* TODO(human): After Akila approves and clinically reviews the final
             article, confirm its published, modified and reviewed dates. Then
             add the visible review line and MedicalWebPage node. */}

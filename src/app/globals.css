@@ -39,19 +39,48 @@
   --color-ink-700: #33384a;
   --color-ink-900: #16182a;
 
+  /* Feedback — reserved for form validation, never used as decoration */
+  --color-error-50: #fff4f2;
+  --color-error-200: #fecdca;
+  --color-error-700: #b42318;
+
   /* Typography */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   /* Fluid type scale */
   --text-display: clamp(2.25rem, 1.6rem + 2.8vw, 3.75rem);
+  --text-display--line-height: 1.08;
   --text-h1: clamp(1.875rem, 1.4rem + 2vw, 3rem);
+  --text-h1--line-height: 1.12;
   --text-h2: clamp(1.5rem, 1.25rem + 1.1vw, 2.25rem);
+  --text-h2--line-height: 1.2;
   --text-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --text-h3--line-height: 1.3;
+  --text-body-lg: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --text-body-lg--line-height: 1.65;
 
   /* Spacing rhythm */
   --spacing-section: clamp(3.5rem, 2rem + 6vw, 7rem);
+  --spacing-gutter: clamp(1.25rem, 0.9rem + 1.5vw, 2rem);
+  --spacing-touch: 2.75rem;
 
+  /* Layout */
+  --container-site: 72rem;
+  --container-reading: 68ch;
+
+  /* Shape and elevation */
   --radius-card: 1rem;
+  --radius-control: 0.75rem;
+  --radius-pill: 9999px;
+  --shadow-card: 0 1px 2px rgb(16 18 46 / 0.06), 0 8px 24px rgb(16 18 46 / 0.05);
+  --shadow-raised: 0 12px 36px rgb(16 18 46 / 0.14);
+
+  /* Motion and stacking */
+  --duration-fast: 160ms;
+  --ease-calm: cubic-bezier(0.2, 0, 0, 1);
+  --z-header: 30;
+  --z-menu: 50;
+  --z-skip-link: 60;
 }
 
 :root {
@@ -72,11 +101,26 @@ html {
 }
 
 body {
+  min-height: 100vh;
   background-color: var(--color-sand-50);
   color: var(--color-ink-700);
   font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
   text-wrap: pretty;
   -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button,
+summary {
+  -webkit-tap-highlight-color: transparent;
 }
 
 h1, h2, h3, h4 {
@@ -88,20 +132,28 @@ h1, h2, h3, h4 {
 
 /* Visible focus for keyboard users — WCAG 2.2 AA, non-negotiable. */
 :focus-visible {
-  outline: 3px solid var(--color-teal-500);
-  outline-offset: 2px;
+  outline: 3px solid var(--color-teal-600);
+  outline-offset: 3px;
   border-radius: 2px;
+}
+
+::selection {
+  background: var(--color-teal-100);
+  color: var(--color-indigo-900);
 }
 
 .skip-link {
   position: absolute;
   left: -9999px;
-  top: 0;
-  z-index: 999;
+  top: 0.75rem;
+  z-index: var(--z-skip-link);
+  min-height: var(--spacing-touch);
   padding: 0.75rem 1.25rem;
   background: var(--color-indigo-600);
   color: white;
+  border-radius: var(--radius-control);
+  box-shadow: var(--shadow-raised);
 }
 .skip-link:focus {
-  left: 0;
+  left: 0.75rem;
 }

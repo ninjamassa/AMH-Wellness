@@ -23,8 +23,8 @@ export const metadata = buildMetadata(pageSeo["/terms"]);
 export default function TermsPage() {
   return (
     <>
-      <Container className="py-[--spacing-section]">
-        <h1 className="text-[length:--text-h1]">Terms</h1>
+      <Container className="py-section">
+        <h1 className="text-h1">Terms</h1>
       </Container>
 
       <AnswerFirst question={answerBlockQuestions["/terms"]}>
@@ -33,7 +33,7 @@ export default function TermsPage() {
         <p>Content in progress.</p>
       </AnswerFirst>
 
-      <Container className="py-[--spacing-section]">
+      <Container className="py-section">
         {/* TODO(content-agent): page body per the brief above. */}
       </Container>
     </>
