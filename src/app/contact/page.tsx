@@ -37,7 +37,7 @@ export default function ContactPage() {
           contact request form. {clinician.name} {clinician.credentials} handles
           replies herself during the published response hours. The form does not
           accept a message or health information; clinical details are collected
-          through the secure booking process instead.
+          through the hosted clinical booking process instead.
         </p>
       </AnswerFirst>
 

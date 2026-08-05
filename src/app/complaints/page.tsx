@@ -30,11 +30,11 @@ export default function ComplaintsPage() {
 
       <AnswerFirst question={answerBlockQuestions["/complaints"]}>
         <p>
-          To complain about AMH Wellness, use the contact request form to ask Akila
-          to reply, then request the secure complaints route; the form itself does
-          not accept complaint or health details. The named handler, response times
-          and independent escalation route remain unconfirmed and need legal review
-          before publication.
+          AMH Wellness has not yet published an operational complaints route. Do
+          not send complaint or health details through the contact form, which
+          accepts only a name and email address. Before launch, Akila and a legal
+          reviewer must confirm the named handler, accessible route, response times
+          and independent escalation process.
         </p>
       </AnswerFirst>
 
@@ -42,13 +42,12 @@ export default function ComplaintsPage() {
         <div className="max-w-3xl space-y-12">
           {/* TODO(legal-review): This is an incomplete complaints-procedure draft. It must not be treated as launch-ready until the handler, stages, timescales and escalation route are approved. */}
           <section>
-            <h2 className="text-h2">How can I raise a concern now?</h2>
+            <h2 className="text-h2">Can I submit a complaint through this website now?</h2>
             <p className="mt-5 text-ink-500">
-              Use the contact request form with your name and email address and ask
-              Akila to reply. The form deliberately has no message box, so it does
-              not send complaint details or health information by ordinary email.
-              You should be given a secure route before sharing the substance of a
-              complaint.
+              No. The contact request form has no message box or purpose selector,
+              so it cannot identify a complaint and must not be used to send its
+              details. AMH Wellness needs an accessible operational route before
+              this page can be approved for launch.
             </p>
           </section>
 
@@ -104,7 +103,7 @@ export default function ComplaintsPage() {
             </p>
           </section>
 
-          <Button href="/contact">Ask Akila to reply</Button>
+          <Button href="/contact">Read the contact form guidance</Button>
           {/* TODO(legal-review): Approve accessibility, representation, consent, confidentiality, record-keeping, learning, candour and external escalation wording. */}
         </div>
       </Container>

@@ -60,7 +60,7 @@ export function assessEligibility(answers: EligibilityAnswers): EligibilityOutco
       bmi,
       headline: "We can only treat patients living in the UK",
       detail:
-        "Our prescriptions are dispensed by a registered UK pharmacy, so we can only deliver within the UK.",
+        "AMH Wellness currently treats and delivers only to patients living in the UK.",
       nextStep: { label: "Read our guidance instead", href: "/blog" },
     };
   }
@@ -71,7 +71,7 @@ export function assessEligibility(answers: EligibilityAnswers): EligibilityOutco
       bmi,
       headline: "Let's have a conversation first",
       detail:
-        "Based on your answers, Akila would like to talk through your health history with you before deciding whether this is the right service for you. That's a good sign, not a bad one — it's exactly the kind of thing that gets missed elsewhere.",
+        "Based on your answers, a conversation with Akila is the appropriate next step. She will talk through your health history with you before deciding whether this is the right service for you.",
       nextStep: { label: "Ask Akila to contact you", href: "/contact" },
     };
   }

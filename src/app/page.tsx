@@ -46,6 +46,27 @@ export default function HomePage() {
 
   return (
     <>
+      <Container className="pt-section">
+        <p className="text-sm font-semibold uppercase tracking-wide text-teal-600">
+          {clinician.jobTitle} · GPhC {clinician.gphcNumber}
+        </p>
+        <h1 className="mt-4 max-w-3xl text-display">
+          Weight loss treatment with the pharmacist who stays with you
+        </h1>
+      </Container>
+
+      <div className="mt-8">
+        <AnswerFirst question={answerBlockQuestions["/"]}>
+          <p>
+            AMH Wellness provides one-to-one weight loss support across the UK with{" "}
+            {clinician.name} {clinician.credentials}, an independent prescribing
+            pharmacist. Care is delivered by video and includes a personalised plan,
+            nutrition guidance, reviews every four weeks and message access to Akila
+            between appointments, with maintenance considered from the beginning.
+          </p>
+        </AnswerFirst>
+      </div>
+
       <Container className="py-section">
         <div className="relative overflow-hidden rounded-card border border-sand-200 bg-white p-6 shadow-card sm:p-10 lg:p-14">
           <span
@@ -53,13 +74,7 @@ export default function HomePage() {
             className="absolute -right-24 -top-24 size-72 rounded-pill bg-teal-50"
           />
           <div className="relative max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-wide text-teal-600">
-              {clinician.jobTitle} · GPhC {clinician.gphcNumber}
-            </p>
-            <h1 className="mt-4 text-display">
-              Weight loss treatment with the pharmacist who stays with you
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-500">
+            <p className="max-w-2xl text-lg leading-relaxed text-ink-500">
               If a previous service gave you a pen and an app but nobody consistent
               to speak to, AMH Wellness is built differently. You see {clinician.name}{" "}
               {clinician.credentials} herself, with nutrition guidance, reviews every
@@ -75,24 +90,10 @@ export default function HomePage() {
         </div>
       </Container>
 
-      <AnswerFirst question={answerBlockQuestions["/"]}>
-        <p>
-          AMH Wellness provides one-to-one weight loss support across the UK with{" "}
-          {clinician.name} {clinician.credentials}, an independent prescribing
-          pharmacist. Care is delivered by video and includes a personalised plan,
-          nutrition guidance, reviews every four weeks and message access to Akila
-          between appointments, with maintenance considered from the beginning.
-        </p>
-      </AnswerFirst>
-
-      <div className="mt-8">
-        <TrustBar />
-      </div>
+      <TrustBar />
 
       <Container className="py-section">
-        <h2 className="text-h2">
-          What you get that other services don&apos;t give you
-        </h2>
+        <h2 className="text-h2">What does AMH Wellness include around the prescription?</h2>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {pillars.map((p) => (
             <div

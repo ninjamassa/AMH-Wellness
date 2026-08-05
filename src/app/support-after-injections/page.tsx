@@ -62,7 +62,7 @@ export default function SupportAfterInjectionsPage() {
 
   return (
     <>
-      <Container className="py-section">
+      <Container className="pt-section">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-wide text-teal-600">
             The part most services skip
@@ -70,25 +70,27 @@ export default function SupportAfterInjectionsPage() {
           <h1 className="mt-4 text-display">
             Support after injections
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink-500">
+        </div>
+      </Container>
+
+      <div className="mt-8">
+        <AnswerFirst question={answerBlockQuestions["/support-after-injections"]}>
+          At AMH Wellness, stopping Mounjaro is planned for because its effect on
+          appetite ends and weight regain can happen; this is a recognised pattern,
+          not a personal failure. Planning starts at your first consultation, with
+          nutrition guidance and a maintenance plan developed one-to-one with{" "}
+          {clinician.name} {clinician.credentials}.
+        </AnswerFirst>
+      </div>
+
+      <Container className="py-section">
+        <div className="max-w-3xl">
+          <p className="mb-12 max-w-2xl text-lg leading-relaxed text-ink-500">
             If you are worried that stopping Mounjaro or Wegovy means starting
             again from the beginning, you are not the only one. AMH Wellness
             treats maintenance as part of your care, not a conversation saved
             for the end.
           </p>
-        </div>
-      </Container>
-
-      <AnswerFirst question={answerBlockQuestions["/support-after-injections"]}>
-        At AMH Wellness, stopping Mounjaro is planned for because its effect on
-        appetite ends and weight regain can happen; this is a recognised pattern,
-        not a personal failure. Planning starts at your first consultation, with
-        nutrition guidance and a maintenance plan developed one-to-one with{" "}
-        {clinician.name} {clinician.credentials}.
-      </AnswerFirst>
-
-      <Container className="py-section">
-        <div className="max-w-3xl">
           <h2 className="text-h2">
             Why weight often comes back — and why it isn&apos;t your fault
           </h2>
@@ -144,7 +146,7 @@ export default function SupportAfterInjectionsPage() {
       </Container>
 
       <Container className="pb-section">
-        <h2 className="text-h2">What our aftercare actually involves</h2>
+        <h2 className="text-h2">What does maintenance planning involve?</h2>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {whatItIncludes.map((item) => (
             <div

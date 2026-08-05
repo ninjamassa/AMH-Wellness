@@ -1,5 +1,6 @@
 import { JsonLd } from "@/components/schema/JsonLd";
 import { AnswerFirst } from "@/components/sections/AnswerFirst";
+import { Cta } from "@/components/sections/Cta";
 import { RelatedLinks } from "@/components/sections/RelatedLinks";
 import { Container } from "@/components/ui/Container";
 import { answerBlockQuestions } from "@/lib/answer-blocks";
@@ -132,6 +133,19 @@ export default function WeightLossInjectionsPage() {
             {siteConfig.clinician.credentials}.
           </p>
         </div>
+      </Container>
+
+      <Container className="pb-section">
+        <Cta
+          heading="Could supported injection treatment be suitable for you?"
+          primary={{ href: "/am-i-eligible", label: "Check your eligibility" }}
+        >
+          <p>
+            The short check compares your answers with AMH Wellness&apos;s starting
+            criteria. Akila makes the final decision only after reviewing your
+            health history with you.
+          </p>
+        </Cta>
       </Container>
 
       <RelatedLinks links={internalLinkPlan["/weight-loss-injections"]} />

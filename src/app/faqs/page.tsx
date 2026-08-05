@@ -44,7 +44,7 @@ const faqEntries: readonly FaqEntry[] = [
     id: "health-data",
     question: "Does the eligibility check send my health answers to AMH Wellness?",
     answer:
-      "No. The calculation happens in your browser, and AMH Wellness does not receive or store your measurements or individual answers. If you continue to booking, clinical information is collected through the secure booking process instead.",
+      "No. The calculation happens in your browser, and AMH Wellness does not receive or store your measurements or individual answers. If you continue to booking, clinical information is collected through the hosted booking process instead.",
   },
   {
     id: "cost",

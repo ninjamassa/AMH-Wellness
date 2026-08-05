@@ -53,7 +53,7 @@ export default function KeepingWeightOffPage() {
       <AnswerFirst question={answerBlockQuestions[path]}>
         <p>
           At AMH Wellness, keeping weight off after stopping Mounjaro starts before
-          the final dose: expect appetite to change, agree a maintenance plan and
+          the final dose: appetite may change, so agree a maintenance plan and
           keep food and activity routines visible. Weight regain is common in
           withdrawal studies, but experiences differ. It is a documented treatment
           challenge, not proof that you failed.

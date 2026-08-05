@@ -1,5 +1,6 @@
 import { JsonLd } from "@/components/schema/JsonLd";
 import { AnswerFirst } from "@/components/sections/AnswerFirst";
+import { Cta } from "@/components/sections/Cta";
 import { RelatedLinks } from "@/components/sections/RelatedLinks";
 import { Container } from "@/components/ui/Container";
 import { answerBlockQuestions } from "@/lib/answer-blocks";
@@ -132,6 +133,19 @@ export default function WegovyPage() {
           </p>
           {/* TODO(human): Akila must clinically review the side-effect and escalation wording before publication. */}
         </div>
+      </Container>
+
+      <Container className="pb-section">
+        <Cta
+          heading="Could Wegovy be suitable for you?"
+          primary={{ href: "/am-i-eligible", label: "Check your eligibility" }}
+        >
+          <p>
+            The short check compares your answers with AMH Wellness&apos;s starting
+            criteria. Akila decides whether Wegovy is suitable only after
+            reviewing your health history with you.
+          </p>
+        </Cta>
       </Container>
 
       <RelatedLinks links={internalLinkPlan["/wegovy"]} />

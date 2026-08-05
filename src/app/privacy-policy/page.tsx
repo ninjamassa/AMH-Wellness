@@ -37,7 +37,7 @@ export default function PrivacyPolicyPage() {
           contact requests and, only with consent, optional analytics. The eligibility
           check runs in your browser, so measurements and individual health answers
           are not sent to AMH Wellness. Booking and clinical records are handled in
-          the secure clinical systems described below.
+          the external clinical systems described below.
         </p>
       </AnswerFirst>
 

@@ -86,7 +86,7 @@ export function EnquiryForm() {
 
       <p className="mb-7 max-w-reading text-sm text-ink-500">
         Leave your name and email address and Akila will reply. Clinical details
-        are collected through the secure booking process, so this form does not
+        are collected through the hosted clinical booking process, so this form does not
         ask for a message or health information.
       </p>
 
