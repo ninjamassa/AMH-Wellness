@@ -71,7 +71,7 @@ export const pageSeo = {
   "/support-after-injections": {
     title: "Support after weight loss injections",
     description:
-      "Get support when coming off Mounjaro or other weight loss injections, with nutrition guidance, maintenance planning and continued contact with pharmacist Akila.",
+      "Get support when coming off Mounjaro or other weight loss injections, with nutrition guidance and a maintenance plan developed with pharmacist Akila.",
     path: "/support-after-injections",
   },
   "/blog": {
