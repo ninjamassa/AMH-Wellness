@@ -92,7 +92,7 @@ const faqEntries: readonly FaqEntry[] = [
     id: "contact",
     question: "How can I ask Akila to contact me?",
     answer:
-      "Use the contact request form with your name and email address. It does not accept a message or health information. Akila handles replies herself during the published response hours, and the form tells you if your details could not be sent.",
+      "Use the contact request form with your name and email address. It does not accept a message or health information. Akila handles replies herself; the published response hours are not a guaranteed turnaround time, and the form tells you if your details could not be sent.",
   },
 ];
 

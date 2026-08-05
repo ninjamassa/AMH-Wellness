@@ -86,8 +86,8 @@ export default function MounjaroPage() {
               You can message Akila between appointments. Because she prescribed
               for you and reviews you herself, your question goes back to someone
               who knows your history and can decide whether your plan needs to
-              change. Messages are answered during AMH Wellness&apos;s stated response
-              hours.
+              change. Akila handles messages during AMH Wellness&apos;s stated response
+              hours; these hours are not a guaranteed turnaround time.
             </p>
             <dl className="mt-5 max-w-md space-y-2 text-sm text-ink-500">
               {siteConfig.contact.responseHours.map((period) => (

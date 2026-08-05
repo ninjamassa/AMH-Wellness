@@ -75,11 +75,12 @@ export default function SupportAfterInjectionsPage() {
 
       <div className="mt-8">
         <AnswerFirst question={answerBlockQuestions["/support-after-injections"]}>
-          At AMH Wellness, stopping Mounjaro means planning for appetite to change
-          again and recognising that weight regain can happen; it is a documented
-          response after treatment, not proof that you have failed. Planning starts
-          at your first consultation, with nutrition guidance and a maintenance plan
-          developed one-to-one with {clinician.name} {clinician.credentials}.
+          At AMH Wellness, stopping Mounjaro means planning for how appetite may
+          change again and recognising that weight regain can happen; it is a
+          documented response after treatment, not proof that you have failed.
+          Planning starts at your first consultation, with nutrition guidance and a
+          maintenance plan developed one-to-one with {clinician.name}{" "}
+          {clinician.credentials}.
         </AnswerFirst>
       </div>
 

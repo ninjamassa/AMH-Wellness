@@ -87,7 +87,8 @@ export default function WegovyPage() {
               You can message Akila between appointments. It is the same pharmacist
               who prescribed for you and reviews you every four weeks, so your
               question does not go into a general queue without your history.
-              Messages are answered during AMH Wellness&apos;s stated response hours.
+              Akila handles messages during AMH Wellness&apos;s stated response hours;
+              these hours are not a guaranteed turnaround time.
             </p>
             <dl className="mt-5 max-w-md space-y-2 text-sm text-ink-500">
               {siteConfig.contact.responseHours.map((period) => (

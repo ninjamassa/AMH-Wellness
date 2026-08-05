@@ -95,7 +95,7 @@ export const pageSeo = {
   "/blog/managing-side-effects": {
     title: "Managing Mounjaro and Wegovy side effects",
     description:
-      "Find practical guidance on Mounjaro and Wegovy side effects, when to seek help, and how direct access means your questions reach prescribing pharmacist Akila.",
+      "Find practical guidance on Mounjaro and Wegovy side effects, when to seek help, and how non-urgent questions go back to prescribing pharmacist Akila.",
     path: "/blog/managing-side-effects",
   },
   "/blog/protein-and-nutrition-on-injections": {
