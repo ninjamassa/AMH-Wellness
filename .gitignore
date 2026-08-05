@@ -1,0 +1,16 @@
+# Dependencies and build output
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+
+# Deployment
+.vercel
+
+# Local environment files; commit names only in .env.example.
+.env*
+!.env.example
+
+# Local operating-system files
+.DS_Store

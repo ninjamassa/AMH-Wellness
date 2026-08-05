@@ -1,0 +1,220 @@
+/**
+ * COMPLIANCE LEXICON
+ *
+ * Every entry below is derived from a published ASA ruling or CAP AdviceOnline
+ * guidance. Cite the source when adding an entry. Do not soften or remove an
+ * entry without a documented regulatory reason recorded in docs/02-compliance.md.
+ *
+ * Source: CAP AdviceOnline "Weight control: Prescription-only medicines"
+ * (updated 29 May 2026) and "Healthcare: Prescription-only Medicines (websites)".
+ */
+
+export type Severity = "block" | "warn";
+
+export interface LexiconRule {
+  /** Regex, case-insensitive, word-boundary aware. */
+  pattern: RegExp;
+  /** Human label for the scanner output. */
+  label: string;
+  /** Zones in which this rule is enforced. */
+  zones: Array<"A" | "B" | "C">;
+  severity: Severity;
+  /** Why it is prohibited — printed in the failure message. */
+  reason: string;
+  /** ASA ruling or CAP advice reference. */
+  source: string;
+  /** What to write instead. */
+  fix: string;
+}
+
+/**
+ * BLOCKED IN ZONE A — direct or indirect POM references.
+ * The ASA treats all of these as advertising a prescription-only medicine.
+ */
+export const POM_RULES: LexiconRule[] = [
+  {
+    pattern: /\b(mounjaro|wegovy|ozempic|saxenda|zepbound|rybelsus|semaglutide|tirzepatide|liraglutide)\b/i,
+    label: "Named POM or active substance",
+    zones: ["A"],
+    severity: "block",
+    reason:
+      "Naming a prescription-only medicine, or its active substance, is a direct breach of CAP rule 12.12 outside the narrow inner-page exemption.",
+    source: "UK Meds Direct Ltd, 11 Feb 2026; SemaPen Ltd, 9 Jul 2025",
+    fix: "Refer to 'a weight management consultation' or 'treatment options discussed at consultation'.",
+  },
+  {
+    pattern: /\bglp[\s-]?1\b/i,
+    label: "POM class reference (GLP-1)",
+    zones: ["A"],
+    severity: "block",
+    reason:
+      "Referring to the GLP-1 class was ruled to be advertising POMs to the public.",
+    source: "Juniper Technologies UK Ltd, 9 Jul 2025",
+    fix: "Describe the clinical service, not the drug class.",
+  },
+  {
+    pattern: /\bweight[\s-]?loss\s+(injection|injections|jab|jabs|pen|pens|medication|medications|medicine|medicines|drug|drugs|shot|shots)\b/i,
+    label: "Colloquial POM reference",
+    zones: ["A"],
+    severity: "block",
+    reason:
+      "All injectable weight-loss medications are POMs, so these phrases are understood by consumers as advertising a POM.",
+    source: "Phlo Technologies Ltd & Juniper Technologies UK Ltd, 9 Jul 2025; SemaPen Ltd, 9 Jul 2025",
+    fix: "Use 'weight management consultation', 'medical weight management' or 'clinician-led weight management'.",
+  },
+  {
+    pattern: /\b(skinny\s?jab|fat\s?jab|obesity\s+treatment\s+jab|slimming\s+injection)\b/i,
+    label: "Colloquial POM nickname",
+    zones: ["A", "B"],
+    severity: "block",
+    reason:
+      "Consumers understand these to mean an injectable weight-loss treatment, all of which are POMs.",
+    source: "WLO Ltd, 17 Dec 2025; Express Healthcare Ltd, 9 Jul 2025",
+    fix: "Never use colloquial nicknames anywhere on the site.",
+  },
+  {
+    pattern: /\bonce[\s-]a[\s-]week\b/i,
+    label: "Weekly-dosing implication",
+    zones: ["A"],
+    severity: "block",
+    reason:
+      "Consumers associate weekly dosing with weight-loss POMs; the ASA ruled 'ONCE-A-WEEK weight loss treatment' promoted a POM.",
+    source: "Hexpress Healthcare Ltd, 9 Jul 2025",
+    fix: "Do not describe dosing frequency in Zone A.",
+  },
+  {
+    pattern: /\bper\s+pen\b|\bprice\s+per\s+pen\b/i,
+    label: "POM price reference",
+    zones: ["A", "B"],
+    severity: "block",
+    reason:
+      "Pricing a 'pen' prices a POM. Price lists must not encourage choosing a POM on price.",
+    source: "Hexpress Healthcare Ltd, 9 Jul 2025",
+    fix: "Price the consultation and the support programme only.",
+  },
+];
+
+/** BLOCKED EVERYWHERE — efficacy, urgency and body-image rules. */
+export const CLAIM_RULES: LexiconRule[] = [
+  {
+    // Note: no trailing \b — "%" is a non-word character, so \b after it
+    // fails to match when followed by a space. This bug shipped once already.
+    pattern:
+      /\b(?:lose|lost|losing|shed|drop(?:ped)?|reduce(?:d)?\s+by|up\s+to)\s+(?:up\s+to\s+)?\d+(?:\.\d+)?\s?(?:%|percent|kgs?|kilos?|kilograms?|lbs?|pounds?|stones?)/i,
+    label: "Specific weight-loss quantum claim",
+    zones: ["A", "B"],
+    severity: "block",
+    reason:
+      "CAP rule 13.9 prohibits claims that people can lose precise amounts of weight in a stated period.",
+    source: "Skinny Revolution Ltd, 7 Oct 2020; CAP rule 13.9",
+    fix: "Describe the support model and clinical review process, not outcomes.",
+  },
+  {
+    pattern: /\bbefore\s*(and|&|\/)\s*after\b/i,
+    label: "Before/after content",
+    zones: ["A", "B", "C"],
+    severity: "block",
+    reason:
+      "Before/after imagery reads as an efficacy claim, which is not permitted for POMs.",
+    source: "CAP AdviceOnline: Before and after photos",
+    fix: "Use written, permissioned testimonials about the support experience instead.",
+  },
+  {
+    pattern: /\b(limited\s+time|act\s+now|don'?t\s+miss\s+out|hurry|whilst\s+stocks\s+last|black\s+friday|run,?\s+don'?t\s+walk|ending\s+soon)\b/i,
+    label: "Undue urgency",
+    zones: ["A", "B", "C"],
+    severity: "block",
+    reason:
+      "Creating urgency around weight-loss treatment decisions was ruled socially irresponsible.",
+    source: "Juniper Technologies UK Ltd, 8 Apr 2026; Menwell Ltd, 27 May 2026",
+    fix: "Remove all scarcity and urgency framing.",
+  },
+  {
+    pattern: /\b(quick\s+fix|effortless|melt\s+(away|the)\s+fat|beach\s+body|bikini\s+body|shed\s+the\s+pounds|drop\s+a\s+dress\s+size)\b/i,
+    label: "Irresponsible body-image or efficacy framing",
+    zones: ["A", "B", "C"],
+    severity: "block",
+    reason:
+      "Exploiting body-image insecurity is socially irresponsible under CAP section 1.3.",
+    source: "Chequp Health Ltd, 17 Dec 2025; MedExpress Enterprises Ltd, 17 Dec 2025",
+    fix: "Use clinical, neutral, non-aesthetic language.",
+  },
+  {
+    pattern: /\b(guaranteed|guarantee)\s+(results?|weight\s+loss|success)\b/i,
+    label: "Outcome guarantee",
+    zones: ["A", "B", "C"],
+    severity: "block",
+    reason: "Unsubstantiated efficacy guarantee for a medical service.",
+    source: "CAP Code section 3 (misleading advertising)",
+    fix: "Describe the process, not a promised outcome.",
+  },
+];
+
+/** WARN — needs a human decision, usually a factual-accuracy risk. */
+export const FACTUAL_RULES: LexiconRule[] = [
+  {
+    pattern: /\b(cqc[\s-]registered|registered\s+with\s+the\s+cqc|cqc[\s-]approved)\b/i,
+    label: "CQC registration claim",
+    zones: ["A", "B", "C"],
+    severity: "block",
+    reason:
+      "CQC registration is still an application in progress. Claiming registration before it is granted is misleading and creates regulatory exposure.",
+    source: "siteConfig.regulatory.cqcRegistered === false",
+    fix: "Omit entirely until the certificate is issued, then flip siteConfig.regulatory.cqcRegistered.",
+  },
+  {
+    pattern: /\bdr\.?\s+akila\b/i,
+    label: "Incorrect honorific",
+    zones: ["A", "B", "C"],
+    severity: "block",
+    reason:
+      "Akila Dungarwalla is a pharmacist (MPharmS), not a doctor. Misrepresenting clinical title is a GPhC standards issue.",
+    source: "GPhC Standards for Pharmacy Professionals",
+    fix: "Use 'Akila Dungarwalla MPharmS, Independent Prescribing Pharmacist'.",
+  },
+  {
+    pattern: /\b(i|we|akila)\s+(recommend|prescribe|endorse)s?\s+\w*(mounjaro|wegovy|semaglutide|tirzepatide)/i,
+    label: "Health-professional endorsement of a medicine",
+    zones: ["A", "B", "C"],
+    severity: "block",
+    reason:
+      "CAP rule 12.18 prohibits health professionals endorsing any medicine, including on inner pages.",
+    source: "CAP rule 12.18; Anesis Spa, 11 Jul 2012",
+    fix: "The clinician may be presented as providing the service; never as endorsing a medicine.",
+  },
+  {
+    pattern: /\b(cure|cures|cured)\b/i,
+    label: "Cure claim",
+    zones: ["A", "B"],
+    severity: "warn",
+    reason: "Obesity is a chronic condition; 'cure' is a prohibited medicinal claim.",
+    source: "CAP rule 12.1",
+    fix: "Use 'manage', 'treat' or 'support'.",
+  },
+];
+
+export const ALL_RULES: LexiconRule[] = [
+  ...POM_RULES,
+  ...CLAIM_RULES,
+  ...FACTUAL_RULES,
+];
+
+/** Approved substitutions the content agent should reach for first. */
+export const APPROVED_LANGUAGE = {
+  service: [
+    "weight management consultation",
+    "clinician-led weight management",
+    "medical weight management service",
+    "one-to-one weight management support",
+    "personalised weight management programme",
+  ],
+  clinician: [
+    "independent prescribing pharmacist",
+    "GPhC-registered prescribing pharmacist",
+  ],
+  outcomeFraming: [
+    "treatment options are discussed during your consultation",
+    "any treatment is decided with your prescribing clinician",
+    "whether treatment is clinically appropriate is assessed at consultation",
+  ],
+} as const;

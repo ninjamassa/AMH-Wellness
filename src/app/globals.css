@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+/**
+ * AMH Wellness design tokens.
+ * Brand: indigo #252767 (primary) + teal (secondary), from the existing logo.
+ * Register tokens with Tailwind v4's @theme so they become utilities
+ * (bg-indigo-600, text-teal-500, etc.) rather than one-off hex values.
+ *
+ * Codex: never hardcode a hex value in a component. Add a token here instead.
+ */
+@theme {
+  /* Primary — indigo */
+  --color-indigo-50: #f2f3f9;
+  --color-indigo-100: #e0e2ef;
+  --color-indigo-200: #c0c4df;
+  --color-indigo-300: #949ac6;
+  --color-indigo-400: #6a71a9;
+  --color-indigo-500: #464d8b;
+  --color-indigo-600: #252767;
+  --color-indigo-700: #1e2054;
+  --color-indigo-800: #171941;
+  --color-indigo-900: #10122e;
+
+  /* Secondary — teal */
+  --color-teal-50: #eefaf9;
+  --color-teal-100: #d3f2ef;
+  --color-teal-200: #a7e5df;
+  --color-teal-300: #6fd2ca;
+  --color-teal-400: #3bb8ae;
+  --color-teal-500: #229c93;
+  --color-teal-600: #197d76;
+  --color-teal-700: #17645f;
+
+  /* Neutrals — warm, to keep the palette calm rather than clinical-cold */
+  --color-sand-50: #fbfaf8;
+  --color-sand-100: #f5f3ef;
+  --color-sand-200: #e8e5df;
+  --color-ink-500: #5a5f6b;
+  --color-ink-700: #33384a;
+  --color-ink-900: #16182a;
+
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Fluid type scale */
+  --text-display: clamp(2.25rem, 1.6rem + 2.8vw, 3.75rem);
+  --text-h1: clamp(1.875rem, 1.4rem + 2vw, 3rem);
+  --text-h2: clamp(1.5rem, 1.25rem + 1.1vw, 2.25rem);
+  --text-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+
+  /* Spacing rhythm */
+  --spacing-section: clamp(3.5rem, 2rem + 6vw, 7rem);
+
+  --radius-card: 1rem;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background-color: var(--color-sand-50);
+  color: var(--color-ink-700);
+  font-family: var(--font-sans);
+  text-wrap: pretty;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  color: var(--color-indigo-600);
+  text-wrap: balance;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+/* Visible focus for keyboard users — WCAG 2.2 AA, non-negotiable. */
+:focus-visible {
+  outline: 3px solid var(--color-teal-500);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 999;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-indigo-600);
+  color: white;
+}
+.skip-link:focus {
+  left: 0;
+}
