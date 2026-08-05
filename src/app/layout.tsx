@@ -36,7 +36,9 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const graph = buildGraph(organisationSchema(), clinicianSchema(), websiteSchema());
   // TODO(human): Add the production GA4 measurement ID only after the privacy
-  // policy is approved and Akila's analytics account is ready.
+  // policy and eligibility-outcome processing are approved, Akila's analytics
+  // account is ready, and Enhanced Measurement's browser-history page views are
+  // disabled in the GA web stream.
   const measurementId = parseGaMeasurementId(
     process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
   );

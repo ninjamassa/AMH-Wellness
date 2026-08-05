@@ -49,9 +49,20 @@ untouched.
   `src/app/layout.tsx` — implement basic consent mode. When a valid GA4 web ID
   is absent, no consent UI or analytics code renders. When it is present, the
   Google tag and data-layer setup do not exist before affirmative acceptance.
-  Decline leaves them absent. A visitor can reopen settings; withdrawing a
-  previous acceptance persists the new choice and reloads without the tag.
-  Advertising storage, signals, user data and personalisation stay denied.
+  Decline leaves them absent. Automatic page views are disabled and the global
+  tag configuration supplies a sanitised pathname-only `page_location`, a blank
+  `page_referrer`, no advertising or Google signals, and a host-only cookie.
+  Initial consent and subsequent App Router navigation emit an explicit
+  `page_view` with no query or hash; only a sanitised same-origin previous path
+  can become its referrer. The 6 custom events also override GA's implicit page
+  context with the same pathname-only location and a blank referrer. A visitor
+  can reopen settings; withdrawing acceptance first queues an explicit denied
+  consent update, activates Google's documented `ga-disable-G-*` switch, clears
+  visible `_ga` cookies, removes the tag and reloads into essential-only mode.
+  If the opt-out cannot be stored, it removes any stale stored acceptance and
+  deliberately does not reload, so a storage failure cannot immediately turn
+  analytics back on. The consent copy names the broad eligibility result rather
+  than implying that no health inference is measured.
 - `src/components/integrations/ArticleReadTracker.tsx` and the 4 article routes
   — fire `article_read` once at 75% document progress. The eligibility flow,
   hosted booking link, successful contact delivery and optional WhatsApp link
@@ -78,6 +89,9 @@ untouched.
 - `ead3d38 feat(analytics): add consent-gated journey measurement`
 - `3eabc6a feat(contact): add privacy-safe enquiry delivery`
 - `0bae1ca feat(booking): add safe hosted handoff controls`
+- `fix(analytics): harden consent privacy` — focused follow-up for pathname-only
+  measurement, reliable withdrawal and the explicit GA launch gates; see the
+  receiving session or `git log` for its final hash.
 
 ### Operational integration map
 
@@ -140,7 +154,19 @@ untouched.
   browser to navigate to it.
 - Basic consent mode is the correct interpretation of “must not load before
   acceptance”: no tag and no consent ping are sent while the choice is unknown
-  or declined. The preference is stored locally in the visitor's browser.
+  or declined. The preference is stored locally in the visitor's browser. GA
+  receives only explicit pathname-only page context; inbound external referrers,
+  query strings and hashes are not forwarded by this implementation.
+- GA4 Enhanced Measurement's “Page changes based on browser history events”
+  option will be disabled in the production web stream before the measurement
+  ID is supplied. Google's documentation says `send_page_view: false` does not
+  disable those separate history-based events, so this is a launch gate rather
+  than an assumption the application can enforce.
+- The documented eligibility outcome bucket is retained because the integration
+  brief explicitly requires it, but it is an inference from health-related
+  answers. Privacy/legal approval of that exact processing and disclosure is a
+  launch gate; if it is not approved, remove the `outcome` parameter before
+  enabling GA4.
 - A fixed neutral WhatsApp greeting and visible response hours are sufficient
   if Akila later enables the channel. The non-public number remains server-side
   while the flag is off.
@@ -158,6 +184,8 @@ untouched.
 | Can the supplied NMWLP questionnaire be placed in Semble's booking confirmation, and has that sequence been tested? | Akila | Yes for launch |
 | Is Resend the approved provider, and are `@amhwellness.co.uk`, SPF, DKIM, DMARC, the sending address and the receiving mailbox working? | Akila / launch owner | Yes for online contact delivery and launch |
 | What is the production GA4 measurement ID, and have the privacy policy and consent wording been legally approved? | Akila / legal reviewer | Yes before enabling GA4 |
+| Has a privacy/legal reviewer approved sending the broad eligibility outcome bucket to GA4 as an inference from health-related answers? | Akila / legal reviewer | Yes before enabling GA4; otherwise remove the parameter |
+| Has “Page changes based on browser history events” been disabled under GA4 Enhanced Measurement for the production web stream? | Launch owner | Yes before enabling GA4 |
 | Should WhatsApp be enabled at launch given Akila's response capacity? | Akila | No if it remains off; yes before enabling it |
 | Does Akila want direct Stripe later despite Semble-hosted payment? If yes, what confirmed fee, Stripe Price ID and durable idempotency store will be used? | Akila / future integration owner | No for the current strategy |
 | What exact question and clinical triggers should set `needsClinicalReview`? | Akila | Existing launch blocker; unchanged |
@@ -168,7 +196,7 @@ untouched.
 |---|---|---|
 | `src/app/am-i-eligible/page.tsx:28` | Supply and end-to-end test the exact hosted Semble booking URL. | Akila |
 | `src/app/contact/actions.ts:41` | Confirm Resend, verify the sending domain, and supply the provider key plus from/to mailboxes. | Akila / launch owner |
-| `src/app/layout.tsx:38` | Supply the GA4 ID after the privacy policy and analytics account are approved. | Akila / legal reviewer |
+| `src/app/layout.tsx:38` | Approve the privacy wording and eligibility-outcome processing, disable Enhanced Measurement browser-history page views, then supply the GA4 ID. | Akila / legal reviewer / launch owner |
 | `src/lib/site-config.ts:36` | Make a deliberate launch decision before changing the WhatsApp flag. | Akila |
 
 The architect's clinical-review marker and the SEO agent's 4 article
@@ -181,7 +209,7 @@ npm run typecheck   pass
 npm run lint        pass — 0 errors, 0 warnings
 npm run compliance  unavailable — no such package script
 npm run copy-check  pass — 0 structural, 0 tone warnings
-npm run test        pass — 63/63
+npm run test        pass — 67/67
 npm run build       pass — 25 static pages generated
 npm run verify      pass
 ```
@@ -198,6 +226,17 @@ npm run verify      pass
 - Test GA configuration: before consent there was no Google tag; decline kept it
   absent; accept inserted exactly one `gtag.js` script; withdrawal reloaded with
   no Google tag. Browser console: 0 errors.
+- Privacy follow-up: focused unit tests prove `send_page_view: false`, a blank
+  uncontrolled referrer, pathname-only locations for initial and client-side
+  page views, explicit denied revocation, the `ga-disable-G-*` property and
+  `_ga`-only cookie selection. It also proves that a failed opt-out storage write
+  cannot trigger a reload into stale acceptance. A query-bearing `/contact`
+  browser load showed no Google resource after withdrawal; acceptance inserted
+  one tag, App Router navigation retained exactly one tag, and a final withdrawal
+  restored an asset inventory with no Google resource and no console errors. A
+  live `g/collect` payload was unavailable with the safe test ID; repeat that
+  network check with the production web stream after disabling its separate
+  Enhanced Measurement history-pageview setting.
 - Test booking configuration: the eligible result rendered exactly
   `https://booking.example.com/amh`; no BMI, measurement, outcome or input query
   was appended. The external link was inspected but not followed.
@@ -212,6 +251,15 @@ npm run verify      pass
 - [Google basic versus advanced consent mode](https://developers.google.com/tag-platform/security/concepts/consent-mode)
   and [consent implementation](https://developers.google.com/tag-platform/security/guides/consent)
   — basic mode blocks Google tags until consent and requires a persisted choice.
+- [GA4 page-view measurement](https://developers.google.com/analytics/devguides/collection/ga4/views)
+  and [the GA4 config reference](https://developers.google.com/analytics/devguides/collection/ga4/reference/config)
+  — `config` sends a page view by default; `send_page_view: false` prevents it,
+  while `page_location` otherwise defaults to the full document URL and
+  `page_referrer` to `document.referrer`.
+- [Google privacy controls](https://developers.google.com/tag-platform/security/guides/privacy)
+  and [cookie configuration](https://developers.google.com/tag-platform/security/guides/customize-cookies)
+  — the measurement-specific `ga-disable-*` property stops sending and GA4 uses
+  `_ga` identifier cookies that can be expired on withdrawal.
 - [Resend send-email API](https://resend.com/docs/api-reference/emails/send-email)
   and [idempotency keys](https://resend.com/docs/dashboard/emails/idempotency-keys)
   — server endpoint, required fields, error contract and 24-hour idempotency.
@@ -231,3 +279,12 @@ npm run verify      pass
 3. Keep integrations disabled until each launch gate above is resolved. A green
    unit/build suite proves the boundaries and failure states, not a real Semble
    booking, payment, email inbox, GA property or WhatsApp operating decision.
+4. Before adding the production GA ID, disable Enhanced Measurement's
+   browser-history page views in the GA web stream. Then inspect `g/collect`
+   requests from a URL containing a query and hash: `dl` must contain only the
+   origin plus pathname, no uncontrolled `dr` may be present, and withdrawing
+   consent must prevent subsequent requests.
+5. Treat the eligibility `outcome` parameter as a privacy/legal launch decision,
+   not an implementation default. The prompt asks for the bucket and the consent
+   UI now discloses it; remove that parameter if the reviewer does not approve
+   the inference being sent to GA4.
