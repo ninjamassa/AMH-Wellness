@@ -73,10 +73,10 @@ export default function PricingPage() {
       <AnswerFirst question={answerBlockQuestions["/pricing"]}>
         <p>
           AMH Wellness has not yet confirmed its consultation, booking-fee,
-          Mounjaro or Wegovy prices. No amount on this page should be treated as
-          final until Akila signs it off. Once confirmed, the page will state
-          exactly what you pay and whether medicine, delivery, reviews and
-          aftercare are included.
+          Mounjaro or Wegovy prices. Until Akila approves the figures, each item is
+          marked &ldquo;Price awaiting confirmation&rdquo;. The final page will show exactly
+          what you pay, what each price includes and whether medicine, dispensing
+          and delivery are included.
         </p>
       </AnswerFirst>
 
@@ -84,10 +84,9 @@ export default function PricingPage() {
         <div className="mb-10 max-w-3xl">
           <h2 className="text-h2">Why are the prices not shown yet?</h2>
           <p className="mt-5 text-ink-500">
-            Akila has not signed off the commercial structure. Showing a number now
-            would make it look confirmed when it is not. Each item therefore stays
-            clearly marked as awaiting confirmation rather than hiding the issue
-            behind an enquiry form.
+            Akila has not yet confirmed the prices or what each one includes. Each
+            item is marked as awaiting confirmation so you can see that the
+            information is incomplete before deciding whether to continue.
           </p>
         </div>
 
@@ -99,8 +98,8 @@ export default function PricingPage() {
             Akila needs to confirm the booking fee, consultation and treatment
             prices; whether medicine, dispensing and delivery are included; how
             aftercare is charged; and the cancellation, refund and subscription
-            terms. Those decisions have commercial weight, so this site will not
-            guess them.
+            terms. These details remain unconfirmed and are listed here so you know
+            what is still missing.
           </p>
           <Button href="/am-i-eligible" className="mt-7">
             Check if you may be eligible
