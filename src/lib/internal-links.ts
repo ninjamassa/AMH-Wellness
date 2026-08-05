@@ -24,7 +24,7 @@ export const internalLinkPlan: Partial<Record<SeoRoute, readonly InternalLink[]>
   "/weight-loss-injections": [
     {
       href: "/support-after-injections",
-      label: "Read about support after weight loss injections",
+      label: "Read about planning for treatment ending",
     },
     { href: "/am-i-eligible", label: "Check if you may be eligible" },
   ],
@@ -33,7 +33,7 @@ export const internalLinkPlan: Partial<Record<SeoRoute, readonly InternalLink[]>
     { href: "/am-i-eligible", label: "Check if you may be eligible" },
   ],
   "/wegovy": [
-    { href: "/support-after-injections", label: "Plan for support after Wegovy" },
+    { href: "/support-after-injections", label: "Plan for coming off Wegovy" },
     { href: "/am-i-eligible", label: "Check if you may be eligible" },
   ],
   "/blog": [
@@ -52,12 +52,12 @@ export const internalLinkPlan: Partial<Record<SeoRoute, readonly InternalLink[]>
     { href: "/weight-loss-injections", label: "See how supported treatment works" },
   ],
   "/blog/keeping-weight-off-after-stopping": [
-    { href: "/support-after-injections", label: "See AMH Wellness aftercare support" },
+    { href: "/support-after-injections", label: "See how AMH Wellness plans for treatment ending" },
   ],
   "/blog/managing-side-effects": [
     { href: "/weight-loss-injections", label: "See how ongoing clinical support works" },
   ],
   "/blog/protein-and-nutrition-on-injections": [
-    { href: "/support-after-injections", label: "Read about nutrition and aftercare support" },
+    { href: "/support-after-injections", label: "Read about nutrition and maintenance planning" },
   ],
 };
