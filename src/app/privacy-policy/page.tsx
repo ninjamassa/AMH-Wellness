@@ -125,7 +125,8 @@ export default function PrivacyPolicyPage() {
               Retention periods have not been supplied. The final notice must state
               how long contact requests, booking information, clinical records,
               financial records, complaints and analytics data are kept, or explain
-              the criteria used to decide. No period is invented in this draft.
+              the criteria used to decide. Until that schedule is confirmed, this
+              page cannot tell you how long each category is kept.
             </p>
             {/* TODO(human): Akila and the legal reviewer must approve a retention schedule for every data category and supplier. */}
           </section>

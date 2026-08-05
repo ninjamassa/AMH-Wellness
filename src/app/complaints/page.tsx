@@ -46,8 +46,8 @@ export default function ComplaintsPage() {
             <p className="mt-5 text-ink-500">
               No. The contact request form has no message box or purpose selector,
               so it cannot identify a complaint and must not be used to send its
-              details. AMH Wellness needs an accessible operational route before
-              this page can be approved for launch.
+              details. Until an accessible operational route is confirmed, this page
+              cannot tell you where to send a complaint.
             </p>
           </section>
 
@@ -56,8 +56,8 @@ export default function ComplaintsPage() {
             <p className="mt-5 text-ink-500">
               AMH Wellness is run single-handedly by Akila Dungarwalla MPharmS, but
               the approved complaints handler and the alternative route for a
-              complaint about Akila herself have not been supplied. Naming someone
-              without that decision would give patients a route that may not work.
+              complaint about Akila herself have not been supplied. Until both routes
+              are confirmed, this page cannot tell you who will handle a complaint.
             </p>
             {/* TODO(human): Name the complaints lead and an independent alternative for complaints involving Akila. */}
           </section>
@@ -67,8 +67,8 @@ export default function ComplaintsPage() {
             <p className="mt-5 text-ink-500">
               Acknowledgement, investigation-update and final-response times are not
               confirmed. They must be published here once Akila and the regulatory
-              or legal reviewer approve them. This draft does not substitute a
-              familiar-looking timescale from another provider.
+              or legal reviewer approve them. Until then, this page cannot tell you
+              when a complaint would be acknowledged or concluded.
             </p>
             {/* TODO(human): Confirm acknowledgement, investigation update and final response times, including what happens when more time is needed. */}
           </section>
@@ -76,7 +76,7 @@ export default function ComplaintsPage() {
           <section>
             <h2 className="text-h2">What should the final procedure explain?</h2>
             <p className="mt-5 text-ink-500">
-              It should explain how a complaint is recorded, who investigates it,
+              It needs to explain how a complaint is recorded, who investigates it,
               how confidentiality and clinical records are handled, how you receive
               updates, what the written outcome contains, how learning is recorded
               and where you can go if you remain dissatisfied.

@@ -33,11 +33,11 @@ export default function TermsPage() {
 
       <AnswerFirst question={answerBlockQuestions["/terms"]}>
         <p>
-          AMH Wellness website and service terms separate general information from
-          personal care: using the site does not create a clinician-patient
-          relationship, treatment requires a consultation, and prescribing is never
-          automatic. Booking, payment, cancellation, refund and treatment terms still
-          need Akila and a legal reviewer to confirm before publication.
+          AMH Wellness has not yet confirmed the full terms for using its remote
+          service. This draft explains that website information is general, treatment
+          requires a consultation and prescribing is never automatic. Booking,
+          payment, cancellation, refund and treatment terms still require Akila&apos;s
+          and a legal reviewer&apos;s approval before publication.
         </p>
       </AnswerFirst>
 
@@ -92,8 +92,9 @@ export default function TermsPage() {
             <p className="mt-5 text-ink-500">
               Prices, inclusions, payment timing, cancellation rights, refunds and
               any subscription or minimum-term arrangement are not confirmed. They
-              must be stated clearly before payment is enabled. This draft does not
-              invent a fee or restrict any statutory consumer right.
+              must be stated clearly before payment is enabled. No fee or cancellation
+              restriction should be treated as agreed until the final terms are
+              published.
             </p>
             {/* TODO(legal-review): Confirm distance-contract information, cooling-off rights, service-start consent, fair cancellation charges, refunds and medicine-return restrictions. */}
           </section>
@@ -101,19 +102,18 @@ export default function TermsPage() {
           <section>
             <h2 className="text-h2">What am I responsible for during care?</h2>
             <p className="mt-5 text-ink-500">
-              The final terms should require accurate and complete information,
-              following agreed prescribing instructions, not sharing prescribed
-              medicine, attending reviews and seeking urgent care when needed. Akila
-              must approve the exact patient responsibilities before they become
-              contractual terms.
+              Akila still needs to confirm the exact responsibilities that will form
+              part of the service terms, including providing accurate information,
+              following prescribing instructions, not sharing prescribed medicine,
+              attending reviews and seeking urgent care when needed.
             </p>
           </section>
 
           <section>
             <h2 className="text-h2">What if something goes wrong?</h2>
             <p className="mt-5 text-ink-500">
-              The complaints page explains the current route for raising a concern,
-              but its handler, timescales and independent escalation route are still
+              The complaints page explains that no operational route is confirmed
+              yet. Its handler, timescales and independent escalation route are still
               awaiting confirmation. Liability, governing law, dispute resolution
               and changes to these terms also require legal drafting.
             </p>
