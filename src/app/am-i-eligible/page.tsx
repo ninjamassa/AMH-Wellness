@@ -63,8 +63,8 @@ export default function EligibilityPage() {
             <p className="mt-3 text-ink-500">
               The calculation happens in your browser. Your measurements and
               health answers are not saved or sent to AMH Wellness. If you move
-              on to booking, clinical information is collected through the hosted
-              booking process instead.
+              on to booking, health information is collected through the external
+              booking and health-questionnaire systems instead.
             </p>
           </section>
         </div>

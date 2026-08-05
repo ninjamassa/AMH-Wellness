@@ -85,9 +85,9 @@ export function EnquiryForm() {
       <input ref={startedAtRef} type="hidden" name="startedAt" defaultValue="" />
 
       <p className="mb-7 max-w-reading text-sm text-ink-500">
-        Leave your name and email address so Akila can reply. Clinical details are
-        collected through the hosted clinical booking process, so this form does not
-        ask for a message or health information.
+        Leave your name and email address so Akila can reply. Health information
+        belongs in the external booking and health-questionnaire systems, so this
+        form does not ask for a message or health information.
       </p>
 
       <div>

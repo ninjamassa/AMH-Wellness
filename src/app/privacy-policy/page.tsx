@@ -76,9 +76,9 @@ export default function PrivacyPolicyPage() {
               </p>
               <p>
                 Optional analytics does not load unless you accept it. If enabled,
-                it records page paths and allowlisted journey events. Recording the
-                broad eligibility result remains subject to explicit privacy and
-                legal approval before analytics is enabled.
+                it records page paths and a limited set of actions on the site.
+                Recording the broad eligibility result remains subject to explicit
+                privacy and legal approval before analytics is enabled.
               </p>
             </div>
           </section>

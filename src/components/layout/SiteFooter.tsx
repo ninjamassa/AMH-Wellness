@@ -58,7 +58,8 @@ export function SiteFooter() {
             (registration {clinician.gphcNumber}). {regulatory.cqcStatusSentence}
           </p>
           <p className="mt-3">
-            Akila handles contact requests during {responseHours}.{" "}
+            Akila handles contact requests herself. Her stated response hours are{" "}
+            {responseHours}.{" "}
             <Link
               href="/contact"
               className="inline-flex min-h-touch items-center underline underline-offset-4 hover:text-indigo-600"

@@ -33,7 +33,7 @@ const faqEntries: readonly FaqEntry[] = [
   {
     id: "same-clinician",
     question: "Will I speak to the same clinician each time?",
-    answer: `Yes. Your consultation and four-weekly reviews are with ${clinician.name} ${clinician.credentials}. She prescribes personally when treatment is appropriate, and patients can message her between appointments with non-urgent questions.`,
+    answer: `Yes. Your consultation and four-weekly reviews are with ${clinician.name} ${clinician.credentials}. She prescribes personally when treatment is appropriate, and you can message her between appointments with non-urgent questions.`,
   },
   {
     id: "eligibility",
@@ -44,7 +44,7 @@ const faqEntries: readonly FaqEntry[] = [
     id: "health-data",
     question: "Does the eligibility check send my health answers to AMH Wellness?",
     answer:
-      "No. The calculation happens in your browser, and AMH Wellness does not receive or store your measurements or individual answers. If you continue to booking, clinical information is collected through the hosted booking process instead.",
+      "No. The calculation happens in your browser, and AMH Wellness does not receive or store your measurements or individual answers. If you continue to booking, health information is collected through the external booking and health-questionnaire systems instead.",
   },
   {
     id: "cost",
@@ -85,7 +85,7 @@ const faqEntries: readonly FaqEntry[] = [
     id: "cqc",
     question: "Is AMH Wellness registered with the CQC?",
     answer: regulatory.showCqcStatus
-      ? `${regulatory.cqcStatusSentence} AMH Wellness does not describe the registration as granted while the process is still under way.`
+      ? regulatory.cqcStatusSentence
       : "AMH Wellness will publish its current regulatory status here.",
   },
   {

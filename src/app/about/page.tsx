@@ -94,8 +94,7 @@ export default function AboutPage() {
             <section>
               <h2 className="text-h2">What is the CQC status?</h2>
               <p className="mt-5 text-ink-500">
-                {regulatory.cqcStatusSentence} AMH Wellness does not describe the
-                registration as granted while that process is still under way.
+                {regulatory.cqcStatusSentence}
               </p>
             </section>
           ) : null}

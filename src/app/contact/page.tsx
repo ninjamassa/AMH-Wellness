@@ -35,9 +35,9 @@ export default function ContactPage() {
         <p>
           To contact AMH Wellness, leave your name and email address in the
           contact request form. {clinician.name} {clinician.credentials} handles
-          replies herself during the published response hours. The form does not
-          accept a message or health information; clinical details are collected
-          through the hosted clinical booking process instead.
+          replies herself; her stated response hours are published below. The form
+          does not accept a message or health information; those details belong in
+          the external booking and health-questionnaire systems.
         </p>
       </AnswerFirst>
 

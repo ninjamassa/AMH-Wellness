@@ -92,10 +92,10 @@ export default function HowItWorksPage() {
           <section>
             <h2 className="text-h2">What if I have a concern between reviews?</h2>
             <p className="mt-5 text-ink-500">
-              Patients can message Akila between appointments. She responds during
-              the hours published by AMH Wellness. This is for non-urgent questions;
-              use NHS 111 for urgent medical advice and call 999 in a life-threatening
-              emergency.
+              You can message Akila between appointments. She handles messages during
+              the hours published by AMH Wellness; these are not a guaranteed
+              turnaround time. This is for non-urgent questions. Use NHS 111 for
+              urgent medical advice and call 999 in a life-threatening emergency.
             </p>
           </section>
 
