@@ -11,7 +11,7 @@ export const pageSeo = {
   "/": {
     title: "UK weight loss support with a pharmacist",
     description:
-      "Get one-to-one UK weight loss support from Akila Dungarwalla MPharmS, with video consultations, nutrition guidance, four-weekly reviews and aftercare.",
+      "Get one-to-one UK weight loss support from Akila Dungarwalla MPharmS, with nutrition guidance, four-weekly reviews and maintenance planning from the start.",
     path: "/",
   },
   "/how-it-works": {
@@ -53,7 +53,7 @@ export const pageSeo = {
   "/weight-loss-injections": {
     title: "Weight loss injections with ongoing support",
     description:
-      "Explore UK weight loss injection treatment with AMH Wellness: a video consultation with Akila, nutrition guidance, four-weekly reviews and planned aftercare.",
+      "Explore UK weight loss injection treatment with Akila: a video consultation, nutrition guidance, four-weekly reviews and maintenance planning from the start.",
     path: "/weight-loss-injections",
   },
   "/mounjaro": {
@@ -113,19 +113,19 @@ export const pageSeo = {
   "/privacy-policy": {
     title: "Privacy policy",
     description:
-      "Read the AMH Wellness privacy policy for information about how the website and remote service handle personal data, your rights and how to contact Akila.",
+      "This draft explains how the AMH Wellness website currently handles data; controller details, lawful bases, suppliers and retention still need approval.",
     path: "/privacy-policy",
   },
   "/terms": {
     title: "Terms of service",
     description:
-      "Read the terms that apply when you use the AMH Wellness website and remote weight loss service, including booking, clinical suitability and responsibilities.",
+      "AMH Wellness service terms are not yet confirmed. Booking, payment, cancellation, refunds and patient responsibilities require approval before launch.",
     path: "/terms",
   },
   "/complaints": {
     title: "Complaints procedure",
     description:
-      "Find out how to raise a concern or complaint with AMH Wellness, who will respond, what happens next and how to ask questions about the complaints process.",
+      "AMH Wellness has not yet confirmed its complaints route, handler, response times or independent escalation process; details must be published before launch.",
     path: "/complaints",
   },
   "/medical-disclaimer": {
