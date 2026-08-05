@@ -16,9 +16,9 @@ export const siteConfig = {
   /** Public line: factual and calm, without an outcome or ease claim. */
   tagline: "One-to-one weight loss support with Akila",
 
-  /** Her one-sentence description, verbatim from the questionnaire. */
+  /** Public description, limited to confirmed service facts. */
   description:
-    "A holistic approach to weight loss, providing expertise and support for weight loss and nutrition.",
+    "Remote weight loss treatment across the UK with one-to-one care from Akila Dungarwalla MPharmS, an independent prescribing pharmacist.",
 
   /** How we describe the service when we need a fuller line. */
   positioning:
