@@ -1,4 +1,5 @@
 import { AnswerFirst } from "@/components/sections/AnswerFirst";
+import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { answerBlockQuestions } from "@/lib/answer-blocks";
 import { pageSeo } from "@/lib/page-seo";
@@ -28,13 +29,84 @@ export default function ComplaintsPage() {
       </Container>
 
       <AnswerFirst question={answerBlockQuestions["/complaints"]}>
-        {/* TODO(content-agent): 40–60 words. Answer outright in the first
-            sentence, name AMH Wellness, make it stand alone. */}
-        <p>Content in progress.</p>
+        <p>
+          To complain about AMH Wellness, use the contact request form to ask Akila
+          to reply, then request the secure complaints route; the form itself does
+          not accept complaint or health details. The named handler, response times
+          and independent escalation route remain unconfirmed and need legal review
+          before publication.
+        </p>
       </AnswerFirst>
 
       <Container className="py-section">
-        {/* TODO(content-agent): page body per the brief above. */}
+        <div className="max-w-3xl space-y-12">
+          {/* TODO(legal-review): This is an incomplete complaints-procedure draft. It must not be treated as launch-ready until the handler, stages, timescales and escalation route are approved. */}
+          <section>
+            <h2 className="text-h2">How can I raise a concern now?</h2>
+            <p className="mt-5 text-ink-500">
+              Use the contact request form with your name and email address and ask
+              Akila to reply. The form deliberately has no message box, so it does
+              not send complaint details or health information by ordinary email.
+              You should be given a secure route before sharing the substance of a
+              complaint.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-h2">Who will handle my complaint?</h2>
+            <p className="mt-5 text-ink-500">
+              AMH Wellness is run single-handedly by Akila Dungarwalla MPharmS, but
+              the approved complaints handler and the alternative route for a
+              complaint about Akila herself have not been supplied. Naming someone
+              without that decision would give patients a route that may not work.
+            </p>
+            {/* TODO(human): Name the complaints lead and an independent alternative for complaints involving Akila. */}
+          </section>
+
+          <section>
+            <h2 className="text-h2">When will I receive a response?</h2>
+            <p className="mt-5 text-ink-500">
+              Acknowledgement, investigation-update and final-response times are not
+              confirmed. They must be published here once Akila and the regulatory
+              or legal reviewer approve them. This draft does not substitute a
+              familiar-looking timescale from another provider.
+            </p>
+            {/* TODO(human): Confirm acknowledgement, investigation update and final response times, including what happens when more time is needed. */}
+          </section>
+
+          <section>
+            <h2 className="text-h2">What should the final procedure explain?</h2>
+            <p className="mt-5 text-ink-500">
+              It should explain how a complaint is recorded, who investigates it,
+              how confidentiality and clinical records are handled, how you receive
+              updates, what the written outcome contains, how learning is recorded
+              and where you can go if you remain dissatisfied.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-h2">Can the CQC resolve my complaint?</h2>
+            <p className="mt-5 text-ink-500">
+              The Care Quality Commission says it cannot take forward individual
+              complaints on a patient&apos;s behalf, although information about poor care
+              can inform its work. The correct independent escalation route for this
+              private service still needs confirmation before it is named here.
+            </p>
+            <p className="mt-4 text-sm text-ink-500">
+              Source: {" "}
+              <a
+                href="https://www.cqc.org.uk/contact-us/how-complain/complain-about-service-or-provider"
+                className="font-medium text-teal-700 underline underline-offset-4"
+              >
+                CQC guidance on complaining about a service or provider
+              </a>
+              .
+            </p>
+          </section>
+
+          <Button href="/contact">Ask Akila to reply</Button>
+          {/* TODO(legal-review): Approve accessibility, representation, consent, confidentiality, record-keeping, learning, candour and external escalation wording. */}
+        </div>
       </Container>
     </>
   );
