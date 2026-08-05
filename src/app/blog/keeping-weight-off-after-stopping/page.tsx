@@ -93,8 +93,8 @@ export default function KeepingWeightOffPage() {
             </p>
             <p className="mt-4 text-ink-500">
               AMH Wellness starts maintenance planning during treatment with Akila
-              herself. The exact duration and cadence of post-treatment support still
-              need Akila&apos;s confirmation before the service makes a public promise.
+              herself. The length, frequency and cost of any separate support after
+              prescriptions end have not yet been confirmed.
             </p>
           </section>
 
@@ -126,8 +126,8 @@ export default function KeepingWeightOffPage() {
               NICE recommends regular feedback and monitoring for at least a year
               after weight-management medicines or behavioural treatment end. That
               can help you notice changes early and decide what support is needed.
-              It is a standard for good follow-up, not a statement that AMH Wellness
-              has confirmed a one-year package.
+              AMH Wellness has not yet confirmed whether it will offer support for
+              that full period.
             </p>
           </section>
 

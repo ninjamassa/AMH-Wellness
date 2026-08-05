@@ -52,10 +52,10 @@ export default function SideEffectsPage() {
       <AnswerFirst question={answerBlockQuestions[path]}>
         <p>
           At AMH Wellness, non-urgent Mounjaro and Wegovy side effects are managed
-          by telling Akila early, keeping food and fluids tolerable, and reviewing
-          whether your plan needs to change. Severe persistent abdominal pain,
-          breathing difficulty or sudden vision changes need urgent medical help,
-          not a message reply.
+          by telling Akila early, choosing foods and fluids you can tolerate, and
+          reviewing whether your plan needs to change. Severe persistent abdominal
+          pain, breathing difficulty or sudden vision changes need urgent medical
+          help, not a message reply.
         </p>
       </AnswerFirst>
 

@@ -70,8 +70,8 @@ export default function BlogPage() {
           AMH Wellness provides pharmacist-led weight loss guidance on choosing
           treatment, managing side effects, eating well and planning for life after
           injections. The articles answer questions patients bring to Akila
-          Dungarwalla MPharmS, with clinical claims sourced and every launch article
-          held for her review before publication.
+          Dungarwalla MPharmS. Sources are linked for the clinical information, and
+          each launch article still requires her clinical review before publication.
         </p>
       </AnswerFirst>
 
@@ -80,8 +80,7 @@ export default function BlogPage() {
         <p className="mt-5 max-w-reading text-ink-500">
           Start with the question that is on your mind now. If you already had a
           difficult experience with an injection service, the aftercare and side-effect
-          guidance is written to help you understand what more supported care should
-          look like.
+          guidance explains what personal clinical support should include.
         </p>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {articles.map((article) => (

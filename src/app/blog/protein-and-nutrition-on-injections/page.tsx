@@ -77,11 +77,10 @@ export default function NutritionPage() {
           <section>
             <h2 className="text-h2">How much protein should I eat?</h2>
             <p className="mt-5 text-ink-500">
-              There is no responsible number this page can give to everyone. Your
-              needs depend on factors including your health, age, body size, activity,
-              usual diet and kidney function. Akila can help you agree an approach
-              that fits your wider plan rather than chasing a generic target from
-              social media.
+              A single number would not account for differences in health, age, body
+              size, activity, usual diet and kidney function. Akila can help you
+              agree an approach that fits your wider plan instead of applying the
+              same target to everyone.
             </p>
             {/* TODO(human): Akila must approve any future numeric protein target and the clinical criteria used to personalise it. */}
           </section>
@@ -93,7 +92,7 @@ export default function NutritionPage() {
               protein-rich options can include eggs, yoghurt, fish, meat, tofu,
               beans and lentils. Choose foods you tolerate and can repeat in ordinary
               life. If eating or drinking is persistently difficult, tell the
-              prescribing clinician rather than trying to solve it with a food list.
+              prescribing clinician rather than relying on general food suggestions.
             </p>
           </section>
 

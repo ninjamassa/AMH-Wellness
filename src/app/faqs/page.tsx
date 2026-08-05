@@ -125,9 +125,8 @@ export default function FaqsPage() {
         <div className="max-w-3xl">
           <h2 className="text-h2">What do you need to know before deciding?</h2>
           <p className="mt-5 text-ink-500">
-            These answers are written for someone who wants to know who will look
-            after her, what happens if she feels unwell and whether there is a plan
-            beyond the prescription.
+            These answers help you understand who will look after you, what happens
+            if you feel unwell and whether there is a plan beyond the prescription.
           </p>
           <div className="mt-8">
             <FaqAccordion items={faqEntries} />

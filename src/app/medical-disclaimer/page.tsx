@@ -66,9 +66,9 @@ export default function MedicalDisclaimerPage() {
             <h2 className="text-h2">Can I rely on an article for my own symptoms?</h2>
             <p className="mt-5 text-ink-500">
               No article can account for your complete history, medicines or current
-              symptoms. Sources and review gates are included to improve accuracy,
-              but information can change and individual advice may differ. Clinical
-              launch articles remain subject to Akila&apos;s review before publication.
+              symptoms. Sources are linked so you can check them, but information
+              can change and individual advice may differ. The clinical launch
+              articles still require Akila&apos;s review before publication.
             </p>
           </section>
 
