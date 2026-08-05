@@ -13,9 +13,8 @@ export const siteConfig = {
   url: "https://amhwellness.co.uk",
   locale: "en-GB",
 
-  /** Akila's own words. She's open to alternatives but likes these. */
-  tagline: "Empowering your weight loss journey",
-  taglineAlt: "Weight loss has never been easier",
+  /** Public line: factual and calm, without an outcome or ease claim. */
+  tagline: "One-to-one weight loss support with Akila",
 
   /** Her one-sentence description, verbatim from the questionnaire. */
   description:

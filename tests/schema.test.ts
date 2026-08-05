@@ -28,6 +28,13 @@ function referencedIds(value: unknown): string[] {
 }
 
 describe("page schema builders", () => {
+  it("does not publish an unconfirmed contact address or marketing slogan", () => {
+    const node = organisationSchema();
+
+    expect(node).not.toHaveProperty("email");
+    expect(node).not.toHaveProperty("slogan");
+  });
+
   it("builds a linked FAQPage from the visible FAQ data contract", () => {
     const node = faqSchema({
       path: "/faqs",
