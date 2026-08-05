@@ -55,8 +55,7 @@ export function SiteFooter() {
           <p>
             All consultations are with {clinician.name} {clinician.credentials},{" "}
             {clinician.jobTitle}, registered with the General Pharmaceutical Council
-            (registration {clinician.gphcNumber}). CQC registration is{" "}
-            {regulatory.cqcStatus.toLowerCase()}.
+            (registration {clinician.gphcNumber}). {regulatory.cqcStatusSentence}
           </p>
           <p className="mt-3">
             Akila handles contact requests during {responseHours}.{" "}

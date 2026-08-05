@@ -30,7 +30,7 @@ export function TrustBar() {
         </ul>
         {regulatory.showCqcStatus ? (
           <p className="mt-6 border-t border-sand-200 pt-5 text-sm text-ink-500">
-            {regulatory.cqcStatus} with the Care Quality Commission.
+            {regulatory.cqcStatusSentence}
           </p>
         ) : null}
       </div>

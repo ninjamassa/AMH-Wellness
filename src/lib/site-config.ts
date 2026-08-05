@@ -67,6 +67,8 @@ export const siteConfig = {
   regulatory: {
     /** "I'm currently going through CQC inspection so we need add this to website" */
     cqcStatus: "Registration in progress",
+    /** Public wording must not imply that registration has been granted. */
+    cqcStatusSentence: "CQC registration is in progress.",
     showCqcStatus: true,
     treatmentsAreMhraApproved: true,
   },

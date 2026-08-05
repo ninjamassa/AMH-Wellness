@@ -85,7 +85,7 @@ const faqEntries: readonly FaqEntry[] = [
     id: "cqc",
     question: "Is AMH Wellness registered with the CQC?",
     answer: regulatory.showCqcStatus
-      ? "CQC registration is in progress. AMH Wellness does not describe the registration as granted while the process is still under way."
+      ? `${regulatory.cqcStatusSentence} AMH Wellness does not describe the registration as granted while the process is still under way.`
       : "AMH Wellness will publish its current regulatory status here.",
   },
   {
@@ -113,11 +113,11 @@ export default function FaqsPage() {
 
       <AnswerFirst question={answerBlockQuestions["/faqs"]}>
         <p>
-          Before starting weight loss injections, you should understand
-          eligibility, side effects, ongoing support, cost and what happens when
-          treatment stops. AMH Wellness explains these points before booking:
-          Akila reviews suitability personally, prices remain unconfirmed, reviews
-          happen every four weeks and maintenance planning begins with your care.
+          AMH Wellness answers the main questions to consider before starting
+          weight loss injections: eligibility, side effects, ongoing support, cost
+          and what happens when treatment stops. Akila reviews suitability
+          personally, prices remain unconfirmed, reviews happen every four weeks
+          and maintenance planning begins with your care.
         </p>
       </AnswerFirst>
 
