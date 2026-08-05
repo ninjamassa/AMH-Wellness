@@ -1,12 +1,17 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Button } from "@/components/ui/Button";
+import {
+  EligibilityProgress,
+  EligibilityStepFields,
+} from "@/components/forms/EligibilityFields";
+import { Button, buttonClassName } from "@/components/ui/Button";
 import type { EligibilityOutcome } from "@/lib/eligibility";
 import { assessEligibility } from "@/lib/eligibility";
 import {
   createEmptyEligibilityDraft,
   eligibilityAnswersFromDraft,
+  eligibilityStepErrors,
   ELIGIBILITY_STEPS,
   isEligibilityStepComplete,
   type EligibilityDraft,
@@ -22,59 +27,21 @@ export interface EligibilityFlowProps {
   relatedConditions: readonly string[];
 }
 
-interface BooleanQuestionProps {
-  name: BooleanField;
-  legend: string;
-  value: boolean | null;
-  onChange: (field: BooleanField, value: boolean) => void;
-  description?: string;
-}
-
-function BooleanQuestion({
-  name,
-  legend,
-  value,
-  onChange,
-  description,
-}: BooleanQuestionProps) {
-  const descriptionId = description ? `${name}-description` : undefined;
-
-  return (
-    <fieldset aria-describedby={descriptionId}>
-      <legend>{legend}</legend>
-      {description ? <p id={descriptionId}>{description}</p> : null}
-      <label>
-        <input
-          type="radio"
-          name={name}
-          checked={value === true}
-          onChange={() => onChange(name, true)}
-          required
-        />
-        Yes
-      </label>
-      <label>
-        <input
-          type="radio"
-          name={name}
-          checked={value === false}
-          onChange={() => onChange(name, false)}
-          required
-        />
-        No
-      </label>
-    </fieldset>
-  );
-}
+const outcomeStyles: Record<EligibilityOutcome["status"], string> = {
+  eligible: "border-teal-200 bg-teal-50",
+  "review-needed": "border-indigo-200 bg-indigo-50",
+  "not-eligible": "border-sand-200 bg-white",
+};
 
 export function EligibilityFlow({ relatedConditions }: EligibilityFlowProps) {
   const [draft, setDraft] = useState<EligibilityDraft>(() =>
     createEmptyEligibilityDraft()
   );
   const [stepIndex, setStepIndex] = useState(0);
+  const [showErrors, setShowErrors] = useState(false);
   const [outcome, setOutcome] = useState<EligibilityOutcome | null>(null);
   const step = ELIGIBILITY_STEPS[stepIndex] ?? "about-you";
-  const isComplete = isEligibilityStepComplete(step, draft);
+  const errors = eligibilityStepErrors(step, draft);
 
   function updateNumericField(field: NumericField, value: string) {
     setDraft((current) => ({ ...current, [field]: value }));
@@ -86,10 +53,14 @@ export function EligibilityFlow({ relatedConditions }: EligibilityFlowProps) {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!isComplete) return;
+    if (!isEligibilityStepComplete(step, draft)) {
+      setShowErrors(true);
+      return;
+    }
 
     const isLastStep = stepIndex === ELIGIBILITY_STEPS.length - 1;
     if (!isLastStep) {
+      setShowErrors(false);
       setStepIndex((current) => current + 1);
       return;
     }
@@ -101,123 +72,72 @@ export function EligibilityFlow({ relatedConditions }: EligibilityFlowProps) {
   function startAgain() {
     setDraft(createEmptyEligibilityDraft());
     setStepIndex(0);
+    setShowErrors(false);
     setOutcome(null);
   }
 
   if (outcome !== null) {
     return (
-      <section aria-live="polite" aria-labelledby="eligibility-result">
-        <h2 id="eligibility-result">{outcome.headline}</h2>
-        <p>Your calculated BMI is {outcome.bmi}.</p>
-        <p>{outcome.detail}</p>
-        <Button href={outcome.nextStep.href}>{outcome.nextStep.label}</Button>
-        <button type="button" onClick={startAgain}>
-          Start again
-        </button>
+      <section
+        aria-live="polite"
+        aria-labelledby="eligibility-result"
+        className={`rounded-card border p-6 shadow-card sm:p-9 ${outcomeStyles[outcome.status]}`}
+      >
+        <p className="text-sm font-semibold text-teal-700">Your eligibility check</p>
+        <h2 id="eligibility-result" className="mt-2 text-h2">{outcome.headline}</h2>
+        <p className="mt-5 font-semibold text-ink-700">Your calculated BMI is {outcome.bmi}.</p>
+        <p className="mt-3 max-w-reading text-ink-500">{outcome.detail}</p>
+        <div className="mt-7 flex flex-wrap gap-4">
+          <Button href={outcome.nextStep.href}>{outcome.nextStep.label}</Button>
+          <button type="button" onClick={startAgain} className={buttonClassName("ghost")}>
+            Start again
+          </button>
+        </div>
       </section>
     );
   }
 
   return (
-    <section aria-labelledby="eligibility-check-heading">
-      <h2 id="eligibility-check-heading">Eligibility check</h2>
-      <p aria-live="polite">
+    <section
+      aria-labelledby="eligibility-check-heading"
+      className="mx-auto max-w-2xl rounded-card border border-sand-200 bg-white p-6 shadow-card sm:p-9"
+    >
+      <h2 id="eligibility-check-heading" className="text-h2">Eligibility check</h2>
+      <p className="mt-2 text-sm text-ink-500" aria-live="polite">
         Step {stepIndex + 1} of {ELIGIBILITY_STEPS.length}
       </p>
+      <div className="mt-6">
+        <EligibilityProgress step={step} />
+      </div>
 
-      {/* TODO(content-agent): refine the form labels without adding fields. */}
-      <form onSubmit={handleSubmit}>
-        {step === "about-you" ? (
-          <fieldset>
-            <legend>About you</legend>
-            <label htmlFor="eligibility-age">Age</label>
-            <input
-              id="eligibility-age"
-              name="age"
-              type="number"
-              inputMode="numeric"
-              min="1"
-              step="1"
-              value={draft.age}
-              onChange={(event) => updateNumericField("age", event.target.value)}
-              required
-            />
-            <BooleanQuestion
-              name="ukResident"
-              legend="Do you live in the UK?"
-              value={draft.ukResident}
-              onChange={updateBooleanField}
-            />
-          </fieldset>
-        ) : null}
+      <form onSubmit={handleSubmit} noValidate className="mt-10">
+        <EligibilityStepFields
+          step={step}
+          draft={draft}
+          errors={errors}
+          showErrors={showErrors}
+          relatedConditions={relatedConditions}
+          onNumericChange={updateNumericField}
+          onBooleanChange={updateBooleanField}
+        />
 
-        {step === "measurements" ? (
-          <fieldset>
-            <legend>Your measurements</legend>
-            <label htmlFor="eligibility-height">Height in centimetres</label>
-            <input
-              id="eligibility-height"
-              name="heightCm"
-              type="number"
-              inputMode="decimal"
-              min="1"
-              step="0.1"
-              value={draft.heightCm}
-              onChange={(event) =>
-                updateNumericField("heightCm", event.target.value)
-              }
-              required
-            />
-            <label htmlFor="eligibility-weight">Weight in kilograms</label>
-            <input
-              id="eligibility-weight"
-              name="weightKg"
-              type="number"
-              inputMode="decimal"
-              min="1"
-              step="0.1"
-              value={draft.weightKg}
-              onChange={(event) =>
-                updateNumericField("weightKg", event.target.value)
-              }
-              required
-            />
-          </fieldset>
-        ) : null}
-
-        {step === "health-context" ? (
-          <fieldset>
-            <legend>Health context</legend>
-            <BooleanQuestion
-              name="hasWeightRelatedCondition"
-              legend="Do you have a weight-related health condition?"
-              description={`Examples include ${relatedConditions.join(", ")}.`}
-              value={draft.hasWeightRelatedCondition}
-              onChange={updateBooleanField}
-            />
-            <BooleanQuestion
-              name="needsClinicalReview"
-              /* TODO(human): Akila must confirm this clinical-review question and its triggers before launch. */
-              legend="Is there anything in your health history you would like Akila to review before you book?"
-              value={draft.needsClinicalReview}
-              onChange={updateBooleanField}
-            />
-          </fieldset>
-        ) : null}
-
-        {stepIndex > 0 ? (
-          <button
-            type="button"
-            onClick={() => setStepIndex((current) => current - 1)}
-          >
-            Back
+        <div className="mt-9 flex flex-wrap-reverse justify-end gap-3 border-t border-sand-200 pt-6">
+          {stepIndex > 0 ? (
+            <button
+              type="button"
+              onClick={() => {
+                setShowErrors(false);
+                setStepIndex((current) => current - 1);
+              }}
+              className={buttonClassName("ghost")}
+            >
+              Back
+            </button>
+          ) : null}
+          <button type="submit" className={buttonClassName("primary")}>
+            {stepIndex === ELIGIBILITY_STEPS.length - 1 ? "See my result" : "Continue"}
           </button>
-        ) : null}
-        <button type="submit" disabled={!isComplete}>
-          {stepIndex === ELIGIBILITY_STEPS.length - 1
-            ? "See my result"
-            : "Continue"}
-        </button>
+        </div>
       </form>
     </section>
   );

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   createEmptyEligibilityDraft,
   eligibilityAnswersFromDraft,
+  eligibilityStepErrors,
   isEligibilityStepComplete,
 } from "@/lib/eligibility-flow";
 
@@ -55,6 +56,27 @@ describe("eligibility flow state", () => {
         needsClinicalReview: false,
       })
     ).toBe(true);
+  });
+
+  it("returns field-specific errors for the current incomplete step", () => {
+    const empty = createEmptyEligibilityDraft();
+
+    expect(eligibilityStepErrors("about-you", empty)).toEqual({
+      age: "Enter your age as a whole number.",
+      ukResident: "Choose yes or no.",
+    });
+    expect(
+      eligibilityStepErrors("measurements", {
+        ...empty,
+        heightCm: "170",
+      })
+    ).toEqual({ weightKg: "Enter your weight in kilograms." });
+    expect(
+      eligibilityStepErrors("health-context", {
+        ...empty,
+        hasWeightRelatedCondition: false,
+      })
+    ).toEqual({ needsClinicalReview: "Choose yes or no." });
   });
 
   it("converts a complete draft into the existing eligibility contract", () => {

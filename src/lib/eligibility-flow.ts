@@ -21,6 +21,9 @@ export interface EligibilityDraft {
   needsClinicalReview: boolean | null;
 }
 
+export type EligibilityField = keyof EligibilityDraft;
+export type EligibilityStepErrors = Partial<Record<EligibilityField, string>>;
+
 export function createEmptyEligibilityDraft(): EligibilityDraft {
   return {
     age: "",
@@ -61,6 +64,45 @@ export function isEligibilityStepComplete(
         draft.hasWeightRelatedCondition !== null &&
         draft.needsClinicalReview !== null
       );
+  }
+}
+
+/**
+ * Patient-facing validation for the currently visible step. Keeping this pure
+ * makes the inline messages consistent with the completeness gate without
+ * duplicating or changing any clinical eligibility rule.
+ */
+export function eligibilityStepErrors(
+  step: EligibilityStep,
+  draft: EligibilityDraft
+): EligibilityStepErrors {
+  const errors: EligibilityStepErrors = {};
+
+  switch (step) {
+    case "about-you":
+      if (positiveInteger(draft.age) === null) {
+        errors.age = "Enter your age as a whole number.";
+      }
+      if (draft.ukResident === null) {
+        errors.ukResident = "Choose yes or no.";
+      }
+      return errors;
+    case "measurements":
+      if (positiveNumber(draft.heightCm) === null) {
+        errors.heightCm = "Enter your height in centimetres.";
+      }
+      if (positiveNumber(draft.weightKg) === null) {
+        errors.weightKg = "Enter your weight in kilograms.";
+      }
+      return errors;
+    case "health-context":
+      if (draft.hasWeightRelatedCondition === null) {
+        errors.hasWeightRelatedCondition = "Choose yes or no.";
+      }
+      if (draft.needsClinicalReview === null) {
+        errors.needsClinicalReview = "Choose yes or no.";
+      }
+      return errors;
   }
 }
 
