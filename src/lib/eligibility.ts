@@ -49,7 +49,7 @@ export function assessEligibility(answers: EligibilityAnswers): EligibilityOutco
       bmi,
       headline: "This service is for adults aged 18 and over",
       detail:
-        "We're not able to treat under-18s. Your GP is the best place to start — they can talk you through options that are right for your age.",
+        "AMH Wellness cannot treat anyone under 18. You can speak to your GP about options that are appropriate for your age.",
       nextStep: { label: "Read our guidance instead", href: "/blog" },
     };
   }
@@ -84,9 +84,9 @@ export function assessEligibility(answers: EligibilityAnswers): EligibilityOutco
     return {
       status: "eligible",
       bmi,
-      headline: "Good news — you're likely to be eligible",
+      headline: "You appear to meet the starting criteria",
       detail:
-        "Your next step is a one-to-one video consultation with Akila. She'll go through your health history properly and you'll agree a plan together. Nothing is prescribed until that conversation has happened.",
+        "Your next step is a one-to-one video consultation with Akila. She will review your health history and explain whether treatment is suitable. Nothing is prescribed until that conversation has happened.",
       nextStep: { label: "Book your consultation", href: "/how-it-works" },
     };
   }
@@ -94,9 +94,8 @@ export function assessEligibility(answers: EligibilityAnswers): EligibilityOutco
   return {
     status: "not-eligible",
     bmi,
-    headline: "This service isn't the right fit right now",
-    detail:
-      "Treatment is licensed for a BMI of 30 and over, or 27 and over alongside a weight-related health condition. That doesn't mean there's nothing that would help — our nutrition guidance is free to read, and your GP can advise on other options.",
+    headline: "You do not meet the starting criteria right now",
+    detail: `AMH Wellness's starting criteria are a BMI of ${bmiThreshold} or above, or ${bmiThresholdWithCondition} or above with a weight-related health condition. You can still read the nutrition guidance or speak to your GP about other options.`,
     nextStep: { label: "Read our nutrition guidance", href: "/blog/protein-and-nutrition-on-injections" },
   };
 }
