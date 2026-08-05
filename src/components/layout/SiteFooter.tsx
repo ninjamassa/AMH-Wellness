@@ -1,10 +1,19 @@
 import Link from "next/link";
 import { Container } from "@/components/ui/Container";
+import { WhatsAppLink } from "@/components/integrations/WhatsAppLink";
+import { buildWhatsAppUrl } from "@/lib/integrations";
 import { footerNav } from "@/lib/navigation";
 import { siteConfig } from "@/lib/site-config";
 
 export function SiteFooter() {
   const { clinician, contact, legalName, companyNumber, regulatory } = siteConfig;
+  const whatsappUrl = buildWhatsAppUrl({
+    enabled: contact.whatsappEnabled,
+    number: contact.whatsappNumber,
+  });
+  const responseHours = contact.responseHours
+    .map((entry) => `${entry.days}, ${entry.hours}`)
+    .join(", and ");
 
   return (
     <footer className="mt-section border-t border-sand-200 bg-white">
@@ -50,10 +59,15 @@ export function SiteFooter() {
             Quality Commission.
           </p>
           <p className="mt-3">
-            We aim to reply{" "}
-            {contact.responseHours.map((h) => `${h.days}, ${h.hours}`).join(", and ")}.
+            We aim to reply {responseHours}.
             Enquiries: {contact.email}
           </p>
+          {whatsappUrl === null ? null : (
+            <WhatsAppLink
+              url={whatsappUrl}
+              responseHours={responseHours}
+            />
+          )}
           <p className="mt-3">
             {legalName} is registered in England &amp; Wales, company number{" "}
             {companyNumber}. Information on this site is general and doesn&apos;t replace a

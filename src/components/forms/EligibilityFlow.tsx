@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
+import { BookingHandoff } from "@/components/integrations/BookingHandoff";
 import {
   EligibilityProgress,
   EligibilityStepFields,
@@ -16,6 +17,7 @@ import {
   isEligibilityStepComplete,
   type EligibilityDraft,
 } from "@/lib/eligibility-flow";
+import { trackAnalyticsEvent } from "@/lib/analytics";
 
 type NumericField = "age" | "heightCm" | "weightKg";
 type BooleanField =
@@ -25,6 +27,7 @@ type BooleanField =
 
 export interface EligibilityFlowProps {
   relatedConditions: readonly string[];
+  bookingUrl: string | null;
 }
 
 const outcomeStyles: Record<EligibilityOutcome["status"], string> = {
@@ -33,7 +36,11 @@ const outcomeStyles: Record<EligibilityOutcome["status"], string> = {
   "not-eligible": "border-sand-200 bg-white",
 };
 
-export function EligibilityFlow({ relatedConditions }: EligibilityFlowProps) {
+export function EligibilityFlow({
+  relatedConditions,
+  bookingUrl,
+}: EligibilityFlowProps) {
+  const hasTrackedStart = useRef(false);
   const [draft, setDraft] = useState<EligibilityDraft>(() =>
     createEmptyEligibilityDraft()
   );
@@ -43,11 +50,19 @@ export function EligibilityFlow({ relatedConditions }: EligibilityFlowProps) {
   const step = ELIGIBILITY_STEPS[stepIndex] ?? "about-you";
   const errors = eligibilityStepErrors(step, draft);
 
+  function trackStartOnce() {
+    if (hasTrackedStart.current) return;
+    hasTrackedStart.current = true;
+    trackAnalyticsEvent({ name: "eligibility_started" });
+  }
+
   function updateNumericField(field: NumericField, value: string) {
+    trackStartOnce();
     setDraft((current) => ({ ...current, [field]: value }));
   }
 
   function updateBooleanField(field: BooleanField, value: boolean) {
+    trackStartOnce();
     setDraft((current) => ({ ...current, [field]: value }));
   }
 
@@ -66,7 +81,14 @@ export function EligibilityFlow({ relatedConditions }: EligibilityFlowProps) {
     }
 
     const answers = eligibilityAnswersFromDraft(draft);
-    if (answers !== null) setOutcome(assessEligibility(answers));
+    if (answers !== null) {
+      const nextOutcome = assessEligibility(answers);
+      setOutcome(nextOutcome);
+      trackAnalyticsEvent({
+        name: "eligibility_completed",
+        outcome: nextOutcome.status,
+      });
+    }
   }
 
   function startAgain() {
@@ -87,8 +109,25 @@ export function EligibilityFlow({ relatedConditions }: EligibilityFlowProps) {
         <h2 id="eligibility-result" className="mt-2 text-h2">{outcome.headline}</h2>
         <p className="mt-5 font-semibold text-ink-700">Your calculated BMI is {outcome.bmi}.</p>
         <p className="mt-3 max-w-reading text-ink-500">{outcome.detail}</p>
+        {outcome.status === "eligible" && bookingUrl === null ? (
+          <p className="mt-4 rounded-control border border-indigo-200 bg-white/70 px-4 py-3 text-sm text-indigo-700">
+            Online booking is being connected. You can ask Akila to contact you
+            without sending health information through this website.
+          </p>
+        ) : null}
         <div className="mt-7 flex flex-wrap gap-4">
-          <Button href={outcome.nextStep.href}>{outcome.nextStep.label}</Button>
+          {outcome.status === "eligible" ? (
+            bookingUrl === null ? (
+              <Button href="/contact">Ask Akila to contact you</Button>
+            ) : (
+              <BookingHandoff
+                bookingUrl={bookingUrl}
+                sourcePage="/am-i-eligible"
+              />
+            )
+          ) : (
+            <Button href={outcome.nextStep.href}>{outcome.nextStep.label}</Button>
+          )}
           <button type="button" onClick={startAgain} className={buttonClassName("ghost")}>
             Start again
           </button>

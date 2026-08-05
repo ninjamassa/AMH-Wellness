@@ -4,14 +4,13 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { buttonClassName } from "@/components/ui/Button";
 import { primaryCta, primaryNav } from "@/lib/navigation";
-import { siteConfig } from "@/lib/site-config";
 
 /**
  * The only client boundary in the site header. A modal native dialog provides
  * the focus trap; React only synchronises its open state and restores page
  * scrolling when the menu closes.
  */
-export function MobileNavigation() {
+export function MobileNavigation({ siteName }: { siteName: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
@@ -78,7 +77,7 @@ export function MobileNavigation() {
               onClick={closeMenu}
               className="inline-flex min-h-touch items-center text-lg font-semibold text-indigo-600"
             >
-              {siteConfig.name}
+              {siteName}
             </Link>
             <button
               type="button"

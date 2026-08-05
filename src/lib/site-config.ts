@@ -33,6 +33,7 @@ export const siteConfig = {
     phone: "07521565393",
     phoneIsPublic: false,
     /** Same number. She's unsure about the admin load, so this is a flag. */
+    // TODO(human): Akila must make a deliberate launch decision before enabling this.
     whatsappEnabled: false,
     whatsappNumber: "447521565393",
     responseHours: [

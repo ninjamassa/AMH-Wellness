@@ -43,7 +43,7 @@ export function SiteHeader() {
           <Button href={primaryCta.href}>{primaryCta.label}</Button>
         </div>
 
-        <MobileNavigation />
+        <MobileNavigation siteName={siteConfig.name} />
       </Container>
     </header>
   );

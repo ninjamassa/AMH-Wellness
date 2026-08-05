@@ -5,6 +5,7 @@ import { answerBlockQuestions } from "@/lib/answer-blocks";
 import { pageSeo } from "@/lib/page-seo";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
+import { parseHostedBookingUrl } from "@/lib/integrations";
 
 /**
  * STAGE     ready
@@ -24,6 +25,9 @@ import { siteConfig } from "@/lib/site-config";
 export const metadata = buildMetadata(pageSeo["/am-i-eligible"]);
 
 export default function EligibilityPage() {
+  // TODO(human): Akila must supply and test the exact hosted Semble booking URL.
+  const bookingUrl = parseHostedBookingUrl(process.env.SEMBLE_BOOKING_URL);
+
   return (
     <>
       <Container className="py-section">
@@ -39,6 +43,7 @@ export default function EligibilityPage() {
       <Container className="py-section">
         <EligibilityFlow
           relatedConditions={siteConfig.eligibility.relatedConditions}
+          bookingUrl={bookingUrl}
         />
         {/* TODO(content-agent): supporting page body per the brief above. */}
       </Container>
