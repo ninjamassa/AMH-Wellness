@@ -71,7 +71,7 @@ export const pageSeo = {
   "/support-after-injections": {
     title: "Support after weight loss injections",
     description:
-      "Get support when coming off Mounjaro or other weight loss injections, with nutrition guidance and a maintenance plan developed with pharmacist Akila.",
+      "Learn what can happen after stopping Mounjaro or Wegovy, why weight may return, and how AMH Wellness plans nutrition and maintenance with pharmacist Akila.",
     path: "/support-after-injections",
   },
   "/blog": {

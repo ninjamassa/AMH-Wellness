@@ -48,7 +48,7 @@ const whatItIncludes = [
     body: "You receive help with meal planning, protein and everyday food choices. The aim is to build a way of eating that does not depend on the medicine reducing your appetite.",
   },
   {
-    title: "A chance to notice what is changing",
+    title: "A plan for changes in hunger and routine",
     body: "Hunger, portions and routines may feel different after treatment. Before prescriptions end, you and Akila can decide what to monitor and how the maintenance plan should respond.",
   },
   {
@@ -65,7 +65,7 @@ export default function SupportAfterInjectionsPage() {
       <Container className="pt-section">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-wide text-teal-600">
-            The part most services skip
+            Maintenance starts before treatment ends
           </p>
           <h1 className="mt-4 text-display">
             Support after injections
@@ -75,24 +75,24 @@ export default function SupportAfterInjectionsPage() {
 
       <div className="mt-8">
         <AnswerFirst question={answerBlockQuestions["/support-after-injections"]}>
-          At AMH Wellness, stopping Mounjaro is planned for because its effect on
-          appetite ends and weight regain can happen; this is a recognised pattern,
-          not a personal failure. Planning starts at your first consultation, with
-          nutrition guidance and a maintenance plan developed one-to-one with{" "}
-          {clinician.name} {clinician.credentials}.
+          At AMH Wellness, stopping Mounjaro means planning for appetite to change
+          again and recognising that weight regain can happen; it is a documented
+          response after treatment, not proof that you have failed. Planning starts
+          at your first consultation, with nutrition guidance and a maintenance plan
+          developed one-to-one with {clinician.name} {clinician.credentials}.
         </AnswerFirst>
       </div>
 
       <Container className="py-section">
         <div className="max-w-3xl">
           <p className="mb-12 max-w-2xl text-lg leading-relaxed text-ink-500">
-            If you are worried that stopping Mounjaro or Wegovy means starting
-            again from the beginning, you are not the only one. AMH Wellness
-            treats maintenance as part of your care, not a conversation saved
-            for the end.
+            If stopping Mounjaro or Wegovy feels like losing the structure you had
+            during treatment, that concern is reasonable. AMH Wellness discusses
+            maintenance as part of your care instead of waiting until the final
+            prescription.
           </p>
           <h2 className="text-h2">
-            Why weight often comes back — and why it isn&apos;t your fault
+            Why can weight return when treatment stops?
           </h2>
           <div className="mt-5 max-w-reading space-y-5 text-ink-500">
             <p>
@@ -117,10 +117,10 @@ export default function SupportAfterInjectionsPage() {
               one target that everyone is expected to follow.
             </p>
             <p>
-              There can also be a practical gap. If the medicine made eating less
-              feel straightforward but nobody helped you build meals and routines
-              for afterwards, old patterns can return as hunger changes. That is a
-              gap in the support you received, not a lack of willpower.
+              There can also be a practical gap. When appetite changes again, meals
+              and routines that worked during treatment may no longer fit in the same
+              way. Planning for that change is part of support; needing to
+              revise the plan is not a lack of willpower.
             </p>
             <p className="text-sm">
               Sources: {" "}

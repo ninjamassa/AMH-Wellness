@@ -51,7 +51,7 @@ export default function HomePage() {
           {clinician.jobTitle} · GPhC {clinician.gphcNumber}
         </p>
         <h1 className="mt-4 max-w-3xl text-display">
-          Weight loss treatment with the pharmacist who stays with you
+          Weight loss treatment with the same pharmacist at every review
         </h1>
       </Container>
 
@@ -75,16 +75,17 @@ export default function HomePage() {
           />
           <div className="relative max-w-3xl">
             <p className="max-w-2xl text-lg leading-relaxed text-ink-500">
-              If a previous service gave you a pen and an app but nobody consistent
-              to speak to, AMH Wellness is built differently. You see {clinician.name}{" "}
-              {clinician.credentials} herself, with nutrition guidance, reviews every
-              four weeks and a plan for what happens after treatment.
+              If a previous service sent a pen and an app but left you unsure who to
+              contact, you will speak to {clinician.name} {clinician.credentials}{" "}
+              herself at AMH Wellness. She conducts your consultation and four-weekly
+              reviews, with nutrition guidance and maintenance planning included from
+              the start.
             </p>
             <div className="mt-9">
               <Button href="/am-i-eligible">Check if you&apos;re eligible</Button>
             </div>
             <p className="mt-4 text-sm text-ink-500">
-              Takes about two minutes. No obligation to book.
+              Takes about two minutes. Akila confirms suitability in consultation.
             </p>
           </div>
         </div>

@@ -21,7 +21,9 @@ export function SiteFooter() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <div className="lg:col-span-1">
             <p className="text-lg font-semibold text-indigo-600">{siteConfig.name}</p>
-            <p className="mt-3 max-w-xs text-sm text-ink-500">{siteConfig.tagline}</p>
+            <p className="mt-3 max-w-xs text-sm text-ink-500">
+              One-to-one weight loss support with Akila.
+            </p>
             <p className="mt-3 text-sm text-ink-500">
               <Link
                 href={siteConfig.social.instagram}

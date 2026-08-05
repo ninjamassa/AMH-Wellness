@@ -62,9 +62,9 @@ export default function HowItWorksPage() {
             <p className="mt-5 text-ink-500">
               The booking process includes a booking fee to secure your appointment,
               but its amount has not yet been confirmed by Akila. Treatment and
-              medicine prices are also awaiting confirmation. AMH Wellness will not
-              publish a plausible-looking number and ask you to discover later that
-              it was wrong.
+              medicine prices are also awaiting confirmation. Until Akila confirms
+              the figures and what each one includes, the pricing page marks them as
+              awaiting confirmation.
             </p>
             {/* TODO(human): Akila must confirm the booking fee, consultation price, treatment prices and exactly what each amount includes. */}
           </section>
